@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\modules\user\models;
+namespace backend\models;
 
 use cheatsheet\Time;
 use common\commands\SendEmailCommand;
@@ -50,12 +50,12 @@ class PasswordResetRequestForm extends Model
         ]);
 
         if ($user) {
-            $token = UserToken::create($user->id, UserToken::TYPE_PASSWORD_RESET, Time::SECONDS_IN_A_DAY);
+            $token = UserToken::create($user->id, UserToken::TYPE_CLIENT_REQUEST_ACCEPT, Time::SECONDS_IN_A_DAY);
             if ($user->save()) {
                 return Yii::$app->commandBus->handle(new SendEmailCommand([
                     'to' => $this->email,
-                    'subject' => Yii::t('frontend', 'Password reset for {name}', ['name' => Yii::$app->name]),
-                    'view' => 'passwordResetToken',
+                    'subject' => Yii::t('backend', 'Request approved from {name}', ['name' => Yii::$app->name]),
+                    'view' => 'main',
                     'params' => [
                         'user' => $user,
                         'token' => $token->token
@@ -67,12 +67,14 @@ class PasswordResetRequestForm extends Model
         return false;
     }
 
+
+
     /**
      * Sends an email with a link, for resetting the password.
      *
      * @return boolean whether the email was send
      */
-    public function sendOTP($otp)
+    public function sendOTP()
     {
         /* @var $user User */
         $user = User::findOne([
@@ -81,7 +83,7 @@ class PasswordResetRequestForm extends Model
         ]);
 
         if ($user) {
-            $token = UserToken::createOTP($otp,$user->id, UserToken::TYPE_OTP, Time::SECONDS_IN_A_DAY);
+            $token = UserToken::createOTP($user->id, UserToken::TYPE_OTP, Time::SECONDS_IN_A_DAY);
             if ($user->save()) {
                 return true;
             }

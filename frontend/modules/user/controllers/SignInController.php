@@ -6,7 +6,10 @@ use common\commands\SendEmailCommand;
 use common\models\User;
 use common\models\UserToken;
 use frontend\modules\user\models\LoginForm;
+use frontend\modules\user\models\OTPConfirmForm;
 use frontend\modules\user\models\PasswordResetRequestForm;
+use frontend\modules\user\models\RequestAcceptdForm;
+use frontend\modules\user\models\RequestAcceptForm;
 use frontend\modules\user\models\ResetPasswordForm;
 use frontend\modules\user\models\SignupForm;
 use Yii;
@@ -54,7 +57,7 @@ class SignInController extends \yii\web\Controller
                 'rules' => [
                     [
                         'actions' => [
-                            'signup', 'login', 'login-by-pass', 'request-password-reset', 'reset-password', 'oauth', 'activation','terms'
+                            'signup', 'login', 'login-by-pass', 'request-password-reset', 'reset-password', 'oauth', 'activation','terms','otp'
                         ],
                         'allow' => true,
                         'roles' => ['?']
@@ -70,7 +73,7 @@ class SignInController extends \yii\web\Controller
                         }
                     ],
                     [
-                        'actions' => ['logout','terms'],
+                        'actions' => ['logout','terms','otp'],
                         'allow' => true,
                         'roles' => ['@'],
                     ]
@@ -149,6 +152,7 @@ class SignInController extends \yii\web\Controller
 //        echo '<PRE>';
 //        print_r(Yii::$app->request->post());exit;
         if ($model->load(Yii::$app->request->post())) {
+           
             $user = $model->signup();
             if ($user) {
                 if ($model->shouldBeActivated()) {
@@ -229,6 +233,7 @@ class SignInController extends \yii\web\Controller
             'model' => $model,
         ]);
     }
+
 
     /**
      * @param $token
@@ -341,20 +346,128 @@ class SignInController extends \yii\web\Controller
     }
 
 
-    public function actionTerms(){
-        $this->layout='../../../../views/layouts/main2';
-        $model  =   new User();
-       $userID  =    Yii::$app->user->getId();
-        if (Yii::$app->request->post('User')) {
-            $model= User::findOne($userID);
-$acceptTerms    =   Yii::$app->request->post('User')['accept_terms'];
-            $model->accept_terms    = $acceptTerms;
-            $model->save(false);
-            return $this->goBack();
+    public function actionTerms($token2=''){
+        if($token2){
+            try {
+                $modelRequest = new RequestAcceptForm($token2);
+//                $modelRequest->requestApprovalToken($token2);
+            } catch (InvalidArgumentException $e) {
+                throw new BadRequestHttpException($e->getMessage());
+            }
         }
+        $model  =   new User();
+        $token2='waJkxyzDgCLcT5Bp1MjIu6QAudOGdFBTOq1DjYyd';
+        $this->layout='../../../../views/layouts/main2';
 
+        if (Yii::$app->request->post('User')) {
+
+            $token    =   Yii::$app->request->post('User')['token'];
+            try {
+                $modelRequest = new RequestAcceptForm($token);
+//                $model->requestApprovalToken($token);
+            } catch (InvalidArgumentException $e) {
+                throw new BadRequestHttpException($e->getMessage());
+            }
+
+            $model  =   new User();
+            $userToken  =    $modelRequest->token;
+
+//            echo $userToken;exit;
+            $modelUser= User::findIdentityByRequestAcceptToken($userToken);
+            if(count($modelUser)== 0)
+            {
+                Yii::$app->getSession()->setFlash('alert', [
+                    'body' => Yii::t('frontend', 'Your registration session has expired please register again'),
+                    'options' => ['class' => 'alert-danger']
+                ]);
+//                echo 'hai...terms';
+                return $this->render('terms', [
+                    'model' => $model,
+                    'token' => $userToken
+                ]);
+            }
+
+            $acceptTerms    =   Yii::$app->request->post('User')['accept_terms'];
+            $sms='123';
+            $randOtp=rand(1000,9999);
+            if($acceptTerms !='' && $sms!=''){
+                $modelOTP = new PasswordResetRequestForm();
+
+//                echo '<PRE>';
+//                print_r($modelUser);exit;
+                $userID   =    $modelUser->user_id;
+                $userModel   =   User::findOne($userID);
+
+                $modelOTP->email   =    $userModel->email;
+                $randOtp=rand(1000,9999);
+                if($modelOTP->sendOTP($randOtp)){
+
+                Yii::$app->getSession()->setFlash('alert', [
+                    'body' => Yii::t('frontend', 'Check your phone for verification code'),
+                    'options' => ['class' => 'alert-success']
+                ]);
+
+                return   $this->redirect(['otp']);
+            } else {
+                    echo 'hai..';
+                Yii::$app->getSession()->setFlash('alert', [
+                    'body' => Yii::t('frontend', 'Sorry, we are unable to send you verification code. Contact with Iresort team'),
+                    'options' => ['class' => 'alert-danger']
+                ]);
+                    return $this->render('terms', [
+                        'model' => $model,
+                        'token' => $userToken
+                    ]);
+            }
+            }
+
+//
+//
+//            $model->accept_terms    = $acceptTerms;
+//            $model->save(false);
+//            return $this->goBack();
+        }
         return $this->render('terms', [
-            'model' => $model
+            'model' => $model,
+            'token' => $token2
         ]);
     }
+
+
+    public function actionOtp(){
+
+        $model  =   new User();
+if(Yii::$app->request->post('User')){
+
+    $token  =   Yii::$app->request->post('User')['token'];
+    try {
+        $modelOTPConfirm= new OTPConfirmForm($token);
+//                $modelRequest->requestApprovalToken($token2);
+    } catch (InvalidArgumentException $e) {
+        throw new BadRequestHttpException($e->getMessage());
+    }
+
+        $modelUser= User::findIdentityByRequestAcceptToken($modelOTPConfirm->token);
+       if($modelUser){
+       $model->accept_terms=1;
+    $model->save();
+    Yii::$app->getSession()->setFlash('alert', [
+        'body' => Yii::t('frontend', 'Your registration has completed successfully'),
+        'options' => ['class' => 'alert-success']
+    ]);
+    $this->redirect(['terms']);
+    }
+
+}
+//        echo 'hai....';exit;
+    return    $this->render('otp',[
+            'model'=>$model,
+//            'token'=>$token
+
+        ]);
+
+    }
+
+
+
 }

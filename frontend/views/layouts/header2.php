@@ -2,14 +2,24 @@
 
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-
+use yii\bootstrap\Alert;
+use yii\helpers\ArrayHelper;
 ?>
-
+<!-- Main content -->
+<section class="content">
+    <?php if (Yii::$app->session->hasFlash('alert')): ?>
+        <?php echo Alert::widget([
+            'body' => ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'body'),
+            'options' => ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'options'),
+        ]) ?>
+    <?php endif; ?>
+</section><!-- /.content -->
 <header class="s-header">
 <div class="row">
     <div class="col col-lg-3">
         <div class="header-logo">
-            <a class="site-logo" href="index.html">
+            <a class="site-logo" href="<?php echo \yii\helpers\Url::to(Yii::getAlias('@web')) ?>">
+<!--                --><?//= \yii\helpers\Html::a('Home', ['/#home']) ?>
 
                 <img src="<?= Yii::getAlias('@web')?>/glimages/services_images/small-white-logo-1316x1047.png" alt="Homepage">
             </a>
@@ -19,11 +29,11 @@ use yii\bootstrap\NavBar;
     <div class="col col-lg-2">
 
     </div>
-    <div class="col col-lg-2">
+    <div class="col col-lg-3">
 
     </div>
-    <div class="col col-lg-3">
-        <div style="width: 200px;">
+    <div class="col col-lg-2" style="background-color: #ffffff; text-align: center; opacity: .5">
+        <div style="background: cornsilk; width:130px;">
             <!--    <nav class="header-nav">-->
 <!--            <div class="hidden-xs">-->
                 <?php echo Nav::widget([
@@ -59,10 +69,15 @@ use yii\bootstrap\NavBar;
             <h3>Navigation</h3>
 
                     <ul class="header-nav__list">
-                <li class="current"><a class="smoothscroll"  href="#home" title="home">Home</a></li>
-                <li><a class="smoothscroll"  href="#about" title="about">About</a></li>
-                <li><a class="smoothscroll"  href="#services" title="services">Services</a></li>
-                        <li><?= \yii\helpers\Html::a('Terms and Condition', ['/user/sign-in/terms'], ['data' => ['method' => 'post']]) ?></li>
+<!--                <li class="current"><a class="smoothscroll"  href="#home" title="home">Home</a></li>-->
+                        <li><?= \yii\helpers\Html::a('Home', ['/#home']) ?></li>
+
+<!--                        <li><a class="smoothscroll"  href="#about" title="about">About</a></li>-->
+                        <li><?= \yii\helpers\Html::a('About', ['/#about']) ?></li>
+
+<!--                        <li><a class="smoothscroll"  href="#services" title="services">Services</a></li>-->
+                        <li><?= \yii\helpers\Html::a('services', ['/#services']) ?></li>
+                        <li><?= \yii\helpers\Html::a('Terms and Condition', ['/user/sign-in/terms']) ?></li>
                         <?php if(Yii::$app->user->isGuest){?> <li><?= \yii\helpers\Html::a('Register', ['/user/sign-in/signup'], ['data' => ['method' => 'post']]) ?></li><?php }?>
                 <?php if(Yii::$app->user->isGuest){?> <li><?= \yii\helpers\Html::a('Login', ['/user/sign-in/login'], ['data' => ['method' => 'post']]) ?></li><?php }?>
                 <?php if(!Yii::$app->user->isGuest){?> <li><?= \yii\helpers\Html::a('Logout', ['/user/sign-in/logout'], ['data' => ['method' => 'post']]) ?>
@@ -70,25 +85,7 @@ use yii\bootstrap\NavBar;
                 </li><?php }?>
             </ul>
 
-            <p>Perspiciatis hic praesentium nesciunt. Et neque a dolorum <a href='#0'>voluptatem</a> porro iusto sequi veritatis libero enim. Iusto id suscipit veritatis neque reprehenderit.</p>
 
-            <ul class="header-nav__social">
-                <li>
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-instagram"></i></a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-behance"></i></a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-dribbble"></i></a>
-                </li>
-            </ul>
 
         </div> <!-- end header-nav__content -->
 

@@ -4,6 +4,20 @@ $config = [
     'controllerNamespace' => 'backend\controllers',
     'defaultRoute' => 'timeline-event/index',
     'components' => [
+
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'viewPath' => '@app/mail',
+            'useFileTransport' => false,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.gmail.com',
+                'username' => 'umarzaman2010@gmail.com',
+                'password' => 'Rayyan.123',
+                'port' => '587',
+                'encryption' => 'tls',
+            ],
+        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -17,6 +31,9 @@ $config = [
             'loginUrl' => ['sign-in/login'],
             'enableAutoLogin' => true,
             'as afterLogin' => common\behaviors\LoginTimestampBehavior::class,
+        ],
+        'session' => [
+            'timeout' => 3600*24,
         ],
     ],
     'modules' => [

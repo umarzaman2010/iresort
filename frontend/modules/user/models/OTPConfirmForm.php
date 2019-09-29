@@ -10,7 +10,7 @@ use yii\base\Model;
 /**
  * Password reset form
  */
-class ResetPasswordForm extends Model
+class OTPConfirmForm extends Model
 {
     /**
      * @var
@@ -32,21 +32,43 @@ class ResetPasswordForm extends Model
     public function __construct($token, $config = [])
     {
         if (empty($token) || !is_string($token)) {
-            throw new InvalidArgumentException('Password reset token cannot be blank.');
+            throw new InvalidArgumentException('Verification Code cannot be blank.');
         }
         /** @var UserToken $tokenModel */
         $this->token = UserToken::find()
             ->notExpired()
-            ->byType(UserToken::TYPE_PASSWORD_RESET)
+            ->byType(UserToken::TYPE_OTP)
             ->byToken($token)
             ->one();
 
         if (!$this->token) {
-            throw new InvalidArgumentException('Wrong password reset token.');
+            throw new InvalidArgumentException('Verification token invalide or expired, Please contact Iresort');
         }
         parent::__construct($config);
     }
 
+/*
+     * @param  string $token
+     * @param  array $config name-value pairs that will be used to initialize the object properties
+     * @throws \yii\base\InvalidArgumentException if token is empty or not valid
+     */
+    public  function requestApprovalToken($token, $config = [])
+    {
+        if (empty($token) || !is_string($token)) {
+            throw new InvalidArgumentException('Request approval token cannot be blank.');
+        }
+        /** @var UserToken $tokenModel */
+        $this->token = UserToken::find()
+            ->notExpired()
+            ->byType(UserToken::TYPE_CLIENT_REQUEST_ACCEPT)
+            ->byToken($token)
+            ->one();
+
+        if (!$this->token) {
+            throw new InvalidArgumentException('Wrong Request approval token or expired, Please contact Iresort');
+        }
+        parent::__construct($config);
+    }
 
     /**
      * @inheritdoc
