@@ -20,7 +20,7 @@ class ResetPasswordForm extends Model
     /**
      * @var \common\models\UserToken
      */
-    private $token;
+    public $token;
 
     /**
      * Creates a form model given a token.
@@ -46,6 +46,7 @@ class ResetPasswordForm extends Model
         }
         parent::__construct($config);
     }
+
 
     /**
      * @inheritdoc

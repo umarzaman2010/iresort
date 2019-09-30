@@ -23,7 +23,7 @@ GlintAsset::register($this);
 
 <?php $this->beginContent('@app/views/layouts/_clear.php'); ?>
 
-<?=$this->render('@app/views/layouts/header2.php') ?>
+<?=$this->render('@app/views/layouts/header_home.php') ?>
 
 <!--<!-- Breadcrumbs End -->
 <!--<div class="container">-->

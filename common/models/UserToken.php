@@ -26,6 +26,8 @@ class UserToken extends ActiveRecord
     public const TYPE_ACTIVATION = 'activation';
     public const TYPE_PASSWORD_RESET = 'password_reset';
     public const TYPE_LOGIN_PASS = 'login_pass';
+    public const TYPE_CLIENT_REQUEST_ACCEPT = 'accept_client_request';
+    public const TYPE_OTP = 'OTP_Code';
     protected const TOKEN_LENGTH = 40;
 
     /**
@@ -70,6 +72,32 @@ class UserToken extends ActiveRecord
     }
 
     /**
+     * @param mixed $user_id
+     * @param string $type
+     * @param int|null $duration
+     * @return bool|UserToken
+     * @throws \yii\base\Exception
+     */
+    public static function createOTP($otp,$user_id, $type, $duration = null)
+    {
+        $randOtp=$otp;
+        $model = new self;
+        $model->setAttributes([
+            'user_id' => $user_id,
+            'type' => $type,
+            'token' => $randOtp,
+            'expire_at' => $duration ? time() + $duration : null
+        ]);
+
+        if (!$model->save(false)) {
+            throw new InvalidCallException;
+        };
+
+        return $model;
+
+    }
+
+    /**
      * @param $token
      * @param $type
      * @return bool|User
@@ -77,7 +105,7 @@ class UserToken extends ActiveRecord
      * @throws \Throwable
      * @throws \yii\db\StaleObjectException
      */
-    public static function use($token, $type)
+    public static function user($token, $type)
     {
         $model = self::find()
             ->where(['token' => $token])

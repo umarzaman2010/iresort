@@ -50,7 +50,8 @@
     "alexantr/yii2-elfinder": "^1.3",
     "trntv/sitemaped": "^0.1",
     "kartik-v/yii2-grid": "@dev",
-    "kartik-v/yii2-builder": "@dev"
+    "kartik-v/yii2-builder": "@dev",
+    "fxp/composer-asset-plugin": "^1.4"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "^2.0.0",
@@ -71,6 +72,7 @@
     "process-timeout": 1800,
     "optimize-autoloader": true
   },
+
   "repositories": [
     {
       "type": "composer",

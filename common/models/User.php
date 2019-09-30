@@ -25,6 +25,7 @@ use yii\web\IdentityInterface;
  * @property string $publicIdentity
  * @property integer $status
  * @property int $accept_terms
+ * @property int $request_status
  * @property integer $created_at
  * @property integer $updated_at
  * @property integer $logged_at
@@ -37,6 +38,9 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_NOT_ACTIVE = 1;
     const STATUS_ACTIVE = 2;
     const STATUS_DELETED = 3;
+    const REQUEST_STATUS_ACCEPTED = 2;
+    const REQUEST_STATUS_REJECTED = 1;
+    const REQUEST_STATUS_PENDING = 0;
 
     const ROLE_USER = 'user';
     const ROLE_MANAGER = 'manager';
@@ -44,7 +48,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     const EVENT_AFTER_SIGNUP = 'afterSignup';
     const EVENT_AFTER_LOGIN = 'afterLogin';
-
+    public $token;
     /**
      * @inheritdoc
      */
@@ -80,6 +84,29 @@ class User extends ActiveRecord implements IdentityInterface
         return static::find()
             ->active()
             ->andWhere(['access_token' => $token])
+            ->one();
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public static function findIdentityByRequestAcceptToken($token, $type = null)
+    {
+        return UserToken::find()
+//            ->active()
+            ->Where(['type'=>'accept_client_request','token' => $token])
+            ->one();
+    }
+
+
+    /**
+     * @inheritdoc
+     */
+    public static function findIdentityByOTPToken($token, $type = null)
+    {
+        return UserToken::find()
+//            ->active()
+            ->Where(['type'=>'OTP_Code','token' => $token])
             ->one();
     }
 
@@ -161,9 +188,11 @@ class User extends ActiveRecord implements IdentityInterface
             [['username', 'email'], 'unique'],
             ['status', 'default', 'value' => self::STATUS_NOT_ACTIVE],
             ['status', 'in', 'range' => array_keys(self::statuses())],
+            ['request_status', 'default', 'value' => self::REQUEST_STATUS_PENDING],
+            ['request_status', 'in', 'range' => array_keys(self::requestStatuses())],
             [['username'], 'filter', 'filter' => '\yii\helpers\Html::encode'],
             [['auth_key', 'access_token', 'password_hash', 'email'], 'required'],
-           [['status', 'accept_terms', 'created_at', 'updated_at', 'logged_at'], 'integer'],
+           [['status','request_status', 'accept_terms', 'created_at', 'updated_at', 'logged_at'], 'integer'],
            [['username', 'auth_key'], 'string', 'max' => 32],
            [['access_token'], 'string', 'max' => 40],
            [['password_hash', 'oauth_client', 'oauth_client_user_id', 'email'], 'string', 'max' => 255],
@@ -180,6 +209,19 @@ class User extends ActiveRecord implements IdentityInterface
             self::STATUS_NOT_ACTIVE => Yii::t('common', 'Not Active'),
             self::STATUS_ACTIVE => Yii::t('common', 'Active'),
             self::STATUS_DELETED => Yii::t('common', 'Deleted')
+        ];
+    }
+
+    /**
+     * Returns user requeststatuses list
+     * @return array|mixed
+     */
+    public static function requestStatuses()
+    {
+        return [
+            self::REQUEST_STATUS_ACCEPTED => Yii::t('common', 'ACCEPTED'),
+            self::REQUEST_STATUS_REJECTED => Yii::t('common', 'REJECTED'),
+            self::REQUEST_STATUS_PENDING => Yii::t('common', 'PENDING')
         ];
     }
 

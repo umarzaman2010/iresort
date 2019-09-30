@@ -32,11 +32,17 @@ use yii\widgets\ActiveForm;
                             <div class="row">
                                 <div class="col col-lg-6">
                                     <div class="form-field">
+                                        <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
+                                            First Name
+                                        </p>
                                         <?php echo $form->field($model, 'firstname')->textInput()->input('firstname', ['placeholder' => "First Name"])->label(false); ?>
                                     </div>
                                 </div>
                                 <div class="col col-lg-6">
                                     <div class="form-field">
+                                        <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
+                                            Last Name
+                                        </p>
                                         <?php echo $form->field($model, 'lastname')->textInput()->input('lastname', ['placeholder' => "Last Name"])->label(false); ?>
                                     </div>
                                 </div>
@@ -46,16 +52,28 @@ use yii\widgets\ActiveForm;
 
 
                             <div class="form-field">
+                                <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
+                                    Email
+                                </p>
                                 <?php echo $form->field($model, 'email')->textInput()->input('email1', ['placeholder' => "Email Address"])->label(false); ?>
                             </div>
                             <div class="form-field">
+                                <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
+                                    Username
+                                </p>
                                 <?php echo $form->field($model, 'username')->textInput()->input('username', ['placeholder' => "Username"])->label(false); ?>
                             </div>
 
                             <div class="form-field">
+                                <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
+                                    Password
+                                </p>
                                 <?php echo $form->field($model, 'password')->passwordInput()->input('password', ['placeholder' => "Password"])->label(false); ?>
                             </div>
                             <div class="form-field">
+                                <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
+                                    Mobile No
+                                </p>
                                 <?php echo $form->field($model, 'contact_number')->textInput()->input('contact_number', ['placeholder' => "Mobile No"])->label(false); ?>
                             </div>
 
@@ -69,10 +87,19 @@ use yii\widgets\ActiveForm;
                             </div>
 
                             <div class="form-field">
-                                <?php echo $form->field($model, 'subscription_reason')->textInput()->input('subscription_reason', ['placeholder' => 'Choose reasons for subscription'])->label(false); ?>
+                                <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
+                                    Choose your reason for subscription
+                                </p>
+                                <span style="align-content: flex-start">
+                                                                    <?php echo $form->field($model, 'subscription_reason')->checkboxList(\frontend\modules\user\models\SignupForm::subscriptionReason())->label(false); ?>
+
+                                </span>
                             </div>
 
                             <div class="form-field">
+                                <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
+                                    Important firgure you recommend
+                                </p>
                                 <?php echo $form->field($model, 'recommend_fig')->textInput()->input('recommend_fig', ['placeholder' => 'Important figures you recommend'])->label(false); ?>
                             </div>
 

@@ -2,9 +2,11 @@
 
 namespace backend\controllers;
 
+use backend\models\PasswordResetRequestForm;
 use backend\models\search\UserSearch;
 use backend\models\UserForm;
 use common\models\User;
+use common\models\UserProfile;
 use common\models\UserToken;
 use Yii;
 use yii\filters\VerbFilter;
@@ -143,4 +145,41 @@ class UserController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+
+
+    /**
+     * @return string|Response
+     */
+    public function actionAccept($id)
+    {
+        $userProfile= User::findOne($id);
+//        echo '<PRE>';
+//        print_r($userProfile);exit;
+        
+        $model = new PasswordResetRequestForm();
+        $model->email   =   $userProfile->email;
+//                echo '<PRE>';
+//        print_r($model);exit;
+        if ($model) {
+            if ($model->sendEmail()) {
+                Yii::$app->getSession()->setFlash('alert', [
+                    'body' => Yii::t('frontend', 'Check your email for further instructions.'),
+                    'options' => ['class' => 'alert-success']
+                ]);
+
+                return $this->redirect(['index']);
+            } else {
+                Yii::$app->getSession()->setFlash('alert', [
+                    'body' => Yii::t('frontend', 'Sorry, we are unable to reset password for email provided.'),
+                    'options' => ['class' => 'alert-danger']
+                ]);
+            }
+        }
+
+        return $this->render('acceptClientRequestToken', [
+            'model' => $model,
+        ]);
+    }
+
 }

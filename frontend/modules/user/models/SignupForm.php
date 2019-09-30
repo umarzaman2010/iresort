@@ -95,15 +95,17 @@ class SignupForm extends Model
             ],
 
             ['password', 'required'],
+            ['subscription_reason', 'required'],
             ['firstname', 'string', 'min' => 6],
             ['lastname', 'string', 'min' => 6],
             ['recommend_fig', 'string', 'min' => 6],
-            ['subscription_reason', 'string', 'min' => 15],
+//            ['subscription_reason', 'string', 'min' => 15],
             ['age_group', 'default', 'value' => self::AGE_6_19],
             ['age_group', 'in', 'range' => array_keys(self::ageLimit())],
 
-            ['subscription_reason', 'default', 'value' => self::LOVE_TO_PRACTICE],
-            ['subscription_reason', 'in', 'range' => array_keys(self::subscriptionReason())],
+//            [['subscription_reason'], 'string', 'max' => 150],
+//            ['subscription_reason', 'default', 'value' => self::LOVE_TO_PRACTICE],
+            ['subscription_reason', 'in', 'range' => array_keys(self::subscriptionReason()), 'allowArray' => true],
         ];
     }
 
@@ -134,16 +136,24 @@ class SignupForm extends Model
     public function signup()
     {
         if ($this->validate()) {
+
             $shouldBeActivated = $this->shouldBeActivated();
             $user = new User();
             $user->username = $this->username;
             $user->email = $this->email;
             $user->status = $shouldBeActivated ? User::STATUS_NOT_ACTIVE : User::STATUS_ACTIVE;
+
+            $subscriptionReasons    =   implode(',',$this->subscription_reason);
+//            echo $subscriptionReasons;exit;
+
+//            echo '<PRE>';
+//            print_r($this->subscription_reason);exit;
             $user->setPassword($this->password);
             if (!$user->save(false)) {
                 throw new Exception("User couldn't be  saved");
             };
-            $user->afterSignup(['firstname'=>$this->firstname,'lastname'=>$this->lastname,'contact_number'=>$this->contact_number,'age_group'=>$this->age_group,'subscription_reason'=>$this->subscription_reason,'recommend_fig'=>$this->recommend_fig]);
+
+            $user->afterSignup(['firstname'=>$this->firstname,'lastname'=>$this->lastname,'contact_number'=>$this->contact_number,'age_group'=>$this->age_group,'subscription_reason'=>$subscriptionReasons,'recommend_fig'=>$this->recommend_fig]);
             if ($shouldBeActivated) {
                 $token = UserToken::create(
                     $user->id,
@@ -188,8 +198,8 @@ class SignupForm extends Model
     public static function ageLimit()
     {
         return [
-            self::AGE_6_19 => Yii::t('common', 'Adult group - from 19 years and above'),
-            self::AGE_6_BELOW => Yii::t('common', 'Adolescents - from 6 to 19 years'),
+            self::AGE_19_ABOVE => Yii::t('common', 'Adult group - from 19 years and above'),
+            self::AGE_6_19 => Yii::t('common', 'Adolescents - from 6 to 19 years'),
             self::AGE_6_BELOW => Yii::t('common', 'Kindergarten age group - less than six years')
         ];
     }
