@@ -280,12 +280,7 @@
                     <li>
                         <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                     </li>
-                    <li>
-                        <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                    </li>
+        
                 </ul> <!-- end contact-social -->
 
             </div> <!-- end contact-info -->

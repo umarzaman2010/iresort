@@ -32,6 +32,9 @@ $config = [
             'enableAutoLogin' => true,
             'as afterLogin' => common\behaviors\LoginTimestampBehavior::class,
         ],
+        'session' => [
+            'timeout' => 3600*24,
+        ],
     ],
     'modules' => [
         'content' => [
