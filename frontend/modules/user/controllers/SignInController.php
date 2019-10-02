@@ -170,7 +170,7 @@ $regMessage =   'شكرا لرغبتكم بعضويه منتجع الفروسي�
 سوف يقوم فريقنا بالتواصل معكم لاستكمال الاجراءت المطلوبه';
                         $contact    =   '+966594078099';
         $sms    = new SMS($contact,$regMessage);
-        $sms->SendMessage();
+//        $sms->SendMessage();
         if($sms){
             Yii::$app->getSession()->setFlash('alert', [
                 'body' => Yii::t(
