@@ -25,7 +25,7 @@ public  $messageBody;
 public  $headerLentgh;
 
     // define constructor to initialize basic variables
-    public function __construct($contact)
+    public function __construct($contact,$body)
     {
 //       $this->contact_number="966594078099";
 //       $this->contact_number= $contact;
@@ -41,17 +41,19 @@ public  $headerLentgh;
     $this->username =   'ieresort';
         $this->password =  'Ieresort@12345';
         $this->messages = array(
-            array('to'=>$contact, 'body'=>'Hello World!'),
+            array('to'=>$contact, 'body'=>$body),
             array('to'=>'+966594078099', 'body'=>'Hello World!'),
-            array('to'=>'+966530556044', 'body'=>'Hello World!'),
+            array('to'=>'+966530556044', 'body'=>$body),
             array('to'=>'+966593006712', 'body'=>'Hello World!'),
         );
         $result = $this->send_message( json_encode($this->messages), 'https://api.bulksms.com/v1/messages?auto-unicode=true&longMessageMaxParts=30',  $this->username , $this->password );
 
         if ($result['http_status'] != 201) {
-            print "Error sending: " . ($result['error'] ? $result['error'] : "HTTP status ".$result['http_status']."; Response was " .$result['server_response']);
+            return true;
+//            print "Error sending: " . ($result['error'] ? $result['error'] : "HTTP status ".$result['http_status']."; Response was " .$result['server_response']);
         } else {
-            print "Response " . $result['server_response'];
+            return false;
+//            print "Response " . $result['server_response'];
             // Use json_decode($result['server_response']) to work with the response further
         }
 

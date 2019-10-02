@@ -164,9 +164,26 @@ class SignInController extends \yii\web\Controller
                         ),
                         'options' => ['class' => 'alert-success']
                     ]);
-                } else {
-                    Yii::$app->getUser()->login($user);
                 }
+
+$regMessage =   'شكرا لرغبتكم بعضويه منتجع الفروسيه العالمي،
+سوف يقوم فريقنا بالتواصل معكم لاستكمال الاجراءت المطلوبه';
+                        $contact    =   '+966594078099';
+        $sms    = new SMS($contact,$regMessage);
+        $sms->SendMessage();
+        if($sms){
+            Yii::$app->getSession()->setFlash('alert', [
+                'body' => Yii::t(
+                    'frontend',
+                    'Your account has been successfully created.'
+                ),
+                'options' => ['class' => 'alert-success']
+            ]);
+        }
+//exit;
+// else {
+//                    Yii::$app->getUser()->login($user);
+//                }
                 return $this->goHome();
             }
         }
