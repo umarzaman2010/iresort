@@ -217,7 +217,6 @@
 
 <!--</section> <!-- end s-clients -->
 
-
 <!-- contact
 ================================================== -->
 <section id="contact" class="s-contact">
@@ -280,7 +279,7 @@
                     <li>
                         <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                     </li>
-        
+
                 </ul> <!-- end contact-social -->
 
             </div> <!-- end contact-info -->

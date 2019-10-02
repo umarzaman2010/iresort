@@ -5,26 +5,7 @@ use yii\widgets\ActiveForm;
 
 ?>
 
-<section class="header1 cid-ry2gdTFqOk" id="header16-1r">
 
-
-
-
-
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-md-10 align-center">
-                <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">
-                    TERS AND CONDITIONS&nbsp;</h1>
-
-                <p class="mbr-text pb-3 mbr-fonts-style display-5">
-                    fully detailed law terms and privacy policy and other conditions</p>
-
-            </div>
-        </div>
-    </div>
-
-</section>
 
 <section class="step1 cid-ry2fYi9nMn" id="step1-1q">
 
@@ -308,42 +289,6 @@ use yii\widgets\ActiveForm;
                             <br>•	ملاعب التنس والرياضات المختلفة
                             <br>•	مناطق الجلوس الداخلية والخارجبه وجميع المرافق الصحية
                             <br>•	ماعدا الفروسية والمؤكولات والمشروبات و تنسيق الحفلات والعلاج الأوستيوباثي ومتجر ملابس الفروسيه والفارسات
-
-
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card  pb-4">
-                <div class="step-element d-flex">
-                    <div class="step-wrapper pb-3 ">
-                    <h3 class="step22 d-flex align-items-center justify-content-center">
-                    <!--8-->
-                    </h3>
-                    </div>
-                    <div class="step-text-content">
-                        <br>
-                        <h5 class="mbr-step-title pb-3 mbr-fonts-style display-5 align-right"> العضويه البلاتينيه(عائلية)
-                        </h5>
-
-                        <h4 class="mbr-step-text mbr-fonts-style display-7 align-right">
-                            •	هي عضوية مدتها سنة ميلادية غير مسترجعة.	           </h4>
-
-                        <p class="align-right">
-
-                            •	يجب أن تكون المشتركات يتمتعون بالياقه الصحيه.
-                            •	يشترط وجود عدد ٢ من المشتركات كحد ادنى
-                            •	العمر المسموح به من فوق ٧ سنوات
-                            <br> •	يتمتع وتتمتع صاحبة العضوية بكافة الخدمات في المنتج والمميزات التالية :
-                            <br>•	ممارسة الفروسيه
-                            <br>•	النادي الرياضي
-                            <br>•	منطقة الألعاب والترفيه
-                            <br>•	جميع خدمات بوديكير و المانيكير
-                            <br>•	سيارات القولف للتنقل والسكوتر
-                            <br>•	ملاعب التنس والرياضات المختلفة
-                            <br>•	مناطق الجلوس الداخلية والخارجبه وجميع المرافق الصحية
-                            <br>•	ماعدا  والمؤكولات والمشروبات و تنسيق الحفلات والعلاج الأوستيوباثي ومتجر ملابس الفروسيه والفارسات
 
 
                         </p>
@@ -679,7 +624,7 @@ use yii\widgets\ActiveForm;
     <hr>
 <?php if($token !=''){ ?>
     <div class="row">
-        <div class="col-lg-5">
+        <div class="col-lg-6 align-right" >
             <?php $form = ActiveForm::begin(['id' => 'form-terms']); ?>
             <?php echo $form->field($model, 'token')->hiddenInput(['value'=> 'waJkxyzDgCLcT5Bp1MjIu6QAudOGdFBTOq1DjYyd'])->label(false); ?>
             <?php echo $form->field($model, 'accept_terms')->checkbox(); ?>
@@ -691,6 +636,7 @@ use yii\widgets\ActiveForm;
 
             <?php ActiveForm::end(); ?>
         </div>
+        <div class="col-lg-6 align-right" ></div>
     </div>
 
     <?php }?>

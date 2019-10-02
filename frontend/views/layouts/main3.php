@@ -21,9 +21,9 @@ GlintAsset::register($this);
 
 ?>
 
-<?php $this->beginContent('@app/views/layouts/_clear_rtl.php'); ?>
+<?php $this->beginContent('@app/views/layouts/_clear.php'); ?>
 
-<?=$this->render('@app/views/layouts/header_terms.php') ?>
+<?=$this->render('@app/views/layouts/header_register.php') ?>
 
 <!--<!-- Breadcrumbs End -->
 <!--<div class="container">-->

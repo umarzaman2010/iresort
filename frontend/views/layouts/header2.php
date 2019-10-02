@@ -82,8 +82,8 @@ array_map(function($code){
 
         <div class="row home-content__main">
 
-            <h2 class="mbr-fonts-style display-1" style="color: #762D4A">True Outdoor Landscape</h2>
-            <p class="lead mbr-text mbr-fonts-style display-5" style="color: #762D4A">a huge area of landscape of green areas and basketball/tennis play yards and special lane for horse riding/walking/ byscle</p>
+            <h2 class="mbr-fonts-style display-1">True Outdoor Landscape</h2>
+            <h2 class="br-fonts-style display-1">a huge area of landscape of green areas and basketball/tennis play yards and special lane for horse riding/walking/ byscle</h2>
 
         </div>
 

@@ -112,15 +112,17 @@ a:hover, a:active {
 h1, h2, h3, h4, h5, h6, 
 .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: "montserrat-medium", sans-serif;
-    color: #000000;
+    color: #7D2D48;
     font-style: normal;
     font-weight: normal;
     text-rendering: optimizeLegibility;
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
-    margin-top: 6rem;
-    margin-bottom: 1.8rem;
+    /*margin-top: 6rem;*/
+    margin-top: 2rem;
+    /*margin-bottom: 1.8rem;*/
+    margin-bottom: -0.2rem;
 }
 
 @media only screen and (max-width: 600px) {
@@ -711,7 +713,8 @@ label, legend {
     font-weight: bold;
     margin-bottom: .9rem;
     line-height: 1.714;
-    color: #000000;
+    color: #ffffff;
+    text-align: left;
     display: block;
 }
 
@@ -1221,7 +1224,8 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .display-1--light {
-    color: #FFFFFF;
+    color: #7D2D48;
+    /*color: #FFFFFF;*/
 }
 
 .display-2 {
@@ -1246,13 +1250,15 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     line-height: 1.333;
     text-transform: uppercase;
     letter-spacing: .25rem;
-    color: #39b54a;
+    /*color: #39b54a;*/
+    color: #632E3E;
     margin-top: 0;
     margin-bottom: 0;
 }
 
 .subhead--dark {
-    color: #000000;
+    /*color: #000000;*/
+    color: #632E3E;
 }
 
 
@@ -1513,7 +1519,8 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     letter-spacing: .25rem;
     margin-bottom: 4.8rem;
     margin-top: .9rem;
-    color: #39b54a;
+    /*color: #39b54a;*/
+    color: #762D4A;
 }
 
 .header-nav p {
@@ -1651,7 +1658,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     font-size: 1.3rem;
     text-transform: uppercase;
     letter-spacing: .3rem;
-    color: #39b54a;
+    /*color: #7D2D48;*/
     -webkit-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
 }
@@ -1860,8 +1867,10 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .home-content__scroll a::before {
-    border-bottom: 2px solid #39b54a;
-    border-right: 2px solid #39b54a;
+    border-bottom: 2px solid #7c0952;
+    /*border-bottom: 2px solid #39b54a;*/
+    /*border-right: 2px solid #39b54a;*/
+    border-right: 2px solid #7c0952;
     content: '';
     display: block;
     height: 8px;
@@ -1885,7 +1894,8 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     display: block;
     width: 2px;
     height: 10.2rem;
-    background-color: #39b54a;
+    background-color: #7c0952;
+    /*background-color: #39b54a;*/
     position: absolute;
     right: 7.2rem;
     bottom: 0;
@@ -2199,9 +2209,10 @@ html.no-csstransitions .home-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-about {
-    padding-top: 16.2rem;
-    padding-bottom: 9rem;
-    background-color: #39b54a;
+    padding-top: 4.2rem;
+    padding-bottom: 4rem;
+    /*background-color: #39b54a;*/
+    background-color: #C4C4C2;
     color: #010507;
     position: relative;
 }
@@ -2369,15 +2380,15 @@ html.no-csstransitions .home-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-services {
-    padding-top: 16.2rem;
-    padding-bottom: 13.2rem;
+    padding-top: 5.2rem;
+    padding-bottom: 4.2rem;
     background-color: #FFFFFF;
     color: #757575;
     position: relative;
 }
 
 
-/* ------------------------------------------------------------------- 
+/* -------------------------------------------------------------------
  * ## services list
  * ------------------------------------------------------------------- */
 .services-list {
@@ -2938,7 +2949,7 @@ html.no-csstransitions .home-content__main {
     background-repeat: no-repeat;
     background-position: center, center;
     padding-top: 15rem;
-    padding-bottom: 12rem;
+    padding-bottom: 2rem;
     color: rgba(255, 255, 255, 0.5);
     position: relative;
 }

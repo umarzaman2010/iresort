@@ -51,7 +51,7 @@ use yii\helpers\ArrayHelper;
                         <?php
 array_map(function($code){
                               ?>
-    <li><?= \yii\helpers\Html::a( Yii::$app->params['availableLocales'][$code], ['/site/set-locale', 'locale'=>$code]) ?></li>
+    <li><?= \yii\helpers\Html::a(Yii::t('frontend',Yii::$app->params['availableLocales'][$code]), ['/site/set-locale', 'locale'=>$code]) ?></li>
 
 
     <?php
@@ -73,48 +73,16 @@ array_map(function($code){
 </header> <!-- end s-header -->
 <!-- home
 ================================================== -->
-<section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="images/hero-bg.jpg" data-natural-width=3000 data-natural-height=2000 data-position-y=center>
+<section class="header1 cid-ry2gdTFqOk" id="header16-1r">
 
-    <div class="overlay"></div>
-    <div class="shadow-overlay"></div>
+<!---->
+<!--<div class="overlay"></div>-->
+<div class="row section-header has-bottom-sep" data-aos="fade-up">
+    <div class="col-full">
+        <h3 class="subhead subhead--dark" style="color: #ffffff;">Welcome to the equestrian resort registration page
+        </h3>
+        <h1 class="display-1 display-1--light">Registration</h1>
+    </div>
+</div> <!-- end section-header -->
 
-    <div class="home-content" style="background-image:url('<?= Yii::getAlias('@web') ?>/glimages/services_images/IMG_20190930242555_428462833_huge.jpg');background-size: cover">
-
-
-            <div class="row home-content__main" style="padding:24px;background-color: #000000;opacity: 0.3">
-
-                <h2 class="mbr-fonts-style display-1" style="color: #ffffff">True Outdoor Landscape</h2>
-                <h2 class="mbr-fonts-style display-1"  style="color: #ffffff">a huge area of landscape of green areas and basketball/tennis play yards and special lane for horse riding/walking/ byscle</h2>
-
-
-        </div>
-
-
-        <div class="home-content__scroll">
-            <a href="#about" class="scroll-link smoothscroll">
-                <span>Scroll Down</span>
-            </a>
-        </div>
-
-        <div class="home-content__line"></div>
-
-    </div> <!-- end home-content -->
-
-
-    <ul class="home-social">
-        <li>
-            <a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
-        </li>
-        <li>
-            <a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a>
-        </li>
-        <li>
-            <a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
-        </li>
-
-    </ul>
-    <!-- end home-social -->
-
-</section> <!-- end s-home -->
-<!-- about
-================================================== -->
+</section>

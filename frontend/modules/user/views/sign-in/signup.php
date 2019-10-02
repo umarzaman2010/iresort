@@ -10,14 +10,6 @@ use yii\widgets\ActiveForm;
 ?>
 
 <section id='about' class="s-about" style="background: #000000">
-    <div class="overlay"></div>
-    <div class="row section-header has-bottom-sep" data-aos="fade-up">
-        <div class="col-full">
-            <h3 class="subhead subhead--dark" style="color: #ffffff;">Welcome to the equestrian resort registration page
-            </h3>
-            <h1 class="display-1 display-1--light">Registration</h1>
-        </div>
-    </div> <!-- end section-header -->
 
     <div class="row about-desc" data-aos="fade-up" >
         <div class="col-full">
@@ -29,26 +21,20 @@ use yii\widgets\ActiveForm;
                         <fieldset>
                             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
-                            <div class="row">
-                                <div class="col col-lg-6">
-                                    <div class="form-field">
-                                        <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
-                                            First Name
-                                        </p>
-                                        <?php echo $form->field($model, 'firstname')->textInput()->input('firstname', ['placeholder' => "First Name"])->label(false); ?>
-                                    </div>
-                                </div>
-                                <div class="col col-lg-6">
-                                    <div class="form-field">
-                                        <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
-                                            Last Name
-                                        </p>
-                                        <?php echo $form->field($model, 'lastname')->textInput()->input('lastname', ['placeholder' => "Last Name"])->label(false); ?>
-                                    </div>
-                                </div>
+
+                            <div class="form-field">
+                                <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
+                                    Full Name
+                                </p>
+                                <?php echo $form->field($model, 'firstname')->textInput()->input('firstname', ['placeholder' => "Full Name"])->label(false); ?>
                             </div>
 
-
+                            <div class="form-field">
+                                <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
+                                    Mobile No
+                                </p>
+                                <?php echo $form->field($model, 'contact_number')->textInput()->input('contact_number', ['placeholder' => "+966550000000"])->label(false); ?>
+                            </div>
 
 
                             <div class="form-field">
@@ -56,25 +42,6 @@ use yii\widgets\ActiveForm;
                                     Email
                                 </p>
                                 <?php echo $form->field($model, 'email')->textInput()->input('email1', ['placeholder' => "Email Address"])->label(false); ?>
-                            </div>
-                            <div class="form-field">
-                                <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
-                                    Username
-                                </p>
-                                <?php echo $form->field($model, 'username')->textInput()->input('username', ['placeholder' => "Username"])->label(false); ?>
-                            </div>
-
-                            <div class="form-field">
-                                <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
-                                    Password
-                                </p>
-                                <?php echo $form->field($model, 'password')->passwordInput()->input('password', ['placeholder' => "Password"])->label(false); ?>
-                            </div>
-                            <div class="form-field">
-                                <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
-                                    Mobile No
-                                </p>
-                                <?php echo $form->field($model, 'contact_number')->textInput()->input('contact_number', ['placeholder' => "Mobile No"])->label(false); ?>
                             </div>
 
                             <div class="form-field">
@@ -100,7 +67,7 @@ use yii\widgets\ActiveForm;
                                 <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
                                     Important firgure you recommend
                                 </p>
-                                <?php echo $form->field($model, 'recommend_fig')->textInput()->input('recommend_fig', ['placeholder' => 'Important figures you recommend'])->label(false); ?>
+                                <?php echo $form->field($model, 'recommend_fig')->textarea(['rows' => '6'])->label(false); ?>
                             </div>
 
                             <div class="form-group">
@@ -151,6 +118,6 @@ use yii\widgets\ActiveForm;
     </div> <!-- end about-desc -->
 
 
-    <div class="about__line"></div>
+<!--    <div class="about__line"></div>-->
 
 </section> <!-- end s-about -->

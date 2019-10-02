@@ -76,15 +76,16 @@ class SignupForm extends Model
     public function rules()
     {
         return [
-            ['username', 'filter', 'filter' => 'trim'],
-            ['username','required'],
+//            ['username', 'filter', 'filter' => 'trim'],
+//            ['username','required'],
+            ['firstname','required'],
             ['contact_number','required'],
             ['age_group','required'],
-            ['username', 'unique',
-                'targetClass' => '\common\models\User',
-                'message' => Yii::t('frontend', 'This username has already been taken.')
-            ],
-            ['username', 'string', 'min' => 2, 'max' => 255],
+//            ['username', 'unique',
+//                'targetClass' => '\common\models\User',
+//                'message' => Yii::t('frontend', 'This username has already been taken.')
+//            ],
+//            ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
@@ -94,9 +95,9 @@ class SignupForm extends Model
                 'message' => Yii::t('frontend', 'This email address has already been taken.')
             ],
 
-            ['password', 'required'],
+//            ['password', 'required'],
             ['subscription_reason', 'required'],
-            ['firstname', 'string', 'min' => 6],
+//            ['firstname', 'string', 'min' => 6],
             ['lastname', 'string', 'min' => 6],
             ['recommend_fig', 'string', 'min' => 6],
 //            ['subscription_reason', 'string', 'min' => 15],
@@ -116,7 +117,7 @@ class SignupForm extends Model
     {
         return [
             'username' => Yii::t('frontend', 'Username'),
-            'firstname' => Yii::t('frontend', 'First Name'),
+            'firstname' => Yii::t('frontend', 'Full Name'),
             'lastname' => Yii::t('frontend', 'Last Name'),
             'contact_number' => Yii::t('frontend', 'Mobile No'),
             'age_group' => Yii::t('frontend', 'Age Group'),

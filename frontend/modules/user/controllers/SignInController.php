@@ -3,6 +3,7 @@
 namespace frontend\modules\user\controllers;
 
 use common\commands\SendEmailCommand;
+use common\models\SMS;
 use common\models\User;
 use common\models\UserToken;
 use frontend\modules\user\models\LoginForm;
@@ -148,7 +149,7 @@ class SignInController extends \yii\web\Controller
     public function actionSignup()
     {
         $model = new SignupForm();
-        $this->layout='../../../../views/layouts/main2';
+        $this->layout='../../../../views/layouts/main3';
 //        echo '<PRE>';
 //        print_r(Yii::$app->request->post());exit;
         if ($model->load(Yii::$app->request->post())) {
@@ -347,6 +348,17 @@ class SignInController extends \yii\web\Controller
 
 
     public function actionTerms($token2=''){
+
+//        $contact    =   '+966594078099';
+//        $sms    = new SMS($contact);
+////        $sms->SendMessage();
+//        if($sms){
+//            echo 'message sent';exit;
+//        }else{
+//            echo 'message not';exit;
+//        }
+//exit;
+
         if($token2){
             try {
                 $modelRequest = new RequestAcceptForm($token2);

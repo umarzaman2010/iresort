@@ -143,7 +143,7 @@
         <h3 class="mbr-section-subtitle pb-5 mbr-fonts-style align-center display-5">
             How to become One of Our Lucky members</h3>
         <div class="step-container row justify-content-center">
-            <div class="card col-12 pb-4 col-md-4 separline">
+            <div class="card col-12 pb-4 col-md-3 separline">
                 <div class="step-element">
                     <div class="step-wrapper pb-3">
                         <h3 class="step d-flex align-items-center justify-content-center m-auto">
@@ -158,7 +158,7 @@
                 </div>
             </div>
 
-            <div class="card col-12 separline pb-4 col-md-4">
+            <div class="card col-12 separline pb-4 col-md-3">
                 <div class="step-element">
                     <div class="step-wrapper pb-3">
                         <h3 class="step d-flex align-items-center justify-content-center m-auto">
@@ -173,7 +173,7 @@
                 </div>
             </div>
 
-            <div class="card col-md-4 col-12 separline pb-4">
+            <div class="card col-md-3 col-12 separline pb-4">
                 <div class="step-element">
                     <div class="step-wrapper pb-3">
                         <h3 class="step d-flex align-items-center justify-content-center m-auto">
@@ -187,7 +187,7 @@
                 </div>
             </div>
 
-            <div class="card col-12 separline last-child col-md-6">
+            <div class="card col-12 separline col-md-3">
                 <div class="step-element">
                     <div class="step-wrapper pb-3">
                         <h3 class="step d-flex align-items-center justify-content-center m-auto">
@@ -248,7 +248,7 @@
                 <h3 class="h6 hide-on-fullwidth">Contact Info</h3>
 
                 <div class="cinfo">
-                    <h5>Address:</h5>
+                    <h5>Where to Find Us</h5>
                     <p>
                         Wadi laban, Riyadh, KSA
                     </p>
@@ -257,16 +257,17 @@
                 <div class="cinfo">
                     <h5>Email Us At</h5>
                     <p>
-                        <a href="mailto:info@ieresort.com">
-                            info@ieresort.com</a>
+                            info@ieresort.com
                     </p>
                 </div>
 
                 <div class="cinfo">
                     <h5>Call Us At</h5>
                     <p>
-                        Phone:  +966582954108
-                        <br><br><a href="https://wa.me/966582954108">whatsapp</a>
+
+                        Phone: +966582954108<br>
+                        whatsApp: 966582954108
+
                     </p>
                 </div>
 
@@ -280,17 +281,11 @@
                     <li>
                         <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                     </li>
-                    <li>
-                        <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                    </li>
+
                 </ul> <!-- end contact-social -->
 
             </div> <!-- end contact-info -->
         </div> <!-- end contact-secondary -->
-
     </div> <!-- end contact-content -->
 
 </section> <!-- end s-contact -->
