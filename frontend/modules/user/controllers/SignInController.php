@@ -493,7 +493,7 @@ $token2 =$token;
 
 
     public function actionOtp(){
-
+$this->layout   = '../../../../views/layouts/main4';
         $model  =   new User();
         $model->scenario    =   User::SCENARIO_OTP_VERIFICATION;
 

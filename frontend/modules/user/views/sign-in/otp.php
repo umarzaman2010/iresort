@@ -10,12 +10,10 @@ use yii\widgets\ActiveForm;
 ?>
 
 <section id='about' class="s-about" style="background: #000000">
-    <div class="overlay"></div>
     <div class="row section-header has-bottom-sep" data-aos="fade-up">
         <div class="col-full">
             <h3 class="subhead subhead--dark" style="color: #ffffff;">Enter verification code, you will receive on your mobile number.
             </h3>
-            <h1 class="display-1 display-1--light">Verification</h1>
         </div>
     </div> <!-- end section-header -->
 
