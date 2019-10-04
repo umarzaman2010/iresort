@@ -467,7 +467,7 @@ $token2 =$token;
 
                 return   $this->redirect(['otp']);
             } else {
-                    echo 'hai..';
+//                    echo 'hai..';
                 Yii::$app->getSession()->setFlash('alert', [
                     'body' => Yii::t('frontend', 'Sorry, we are unable to send you verification code. Contact with Iresort team'),
                     'options' => ['class' => 'alert-danger']
