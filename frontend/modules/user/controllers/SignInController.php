@@ -421,7 +421,7 @@ $token2 =$token;
 
 //            echo $userToken;exit;
             $modelUser= User::findIdentityByRequestAcceptToken($userToken);
-            if(count($modelUser)== 0)
+            if(!$modelUser)
             {
                 Yii::$app->getSession()->setFlash('alert', [
                     'body' => Yii::t('frontend', 'Your registration session has expired please register again'),
