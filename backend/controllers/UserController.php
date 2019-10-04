@@ -169,23 +169,23 @@ class UserController extends Controller
             $user->request_status   =   2;
             if ($model && $user->save()) {
 
-                $randOtp=rand(1000,9999).rand(11000,999999);
-                $regMessage =   'مبروك لقد تم اختياركم لتوقيع العقد الالكتروني للانضمام الى منتجع الفروسيه العالمي.
-الرجاء اتباع الرابط اناه   ';
-
-                $regMessage .= 'ieresort.com/ieresort/frontend/web/user/sign-in/terms?token='.$randOtp;
-
-//                $regMessage .=  'http://'.$_SERVER['SERVER_NAME'].'/'.Yii::getAlias('frontend/web//user/sign-in/terms?token='.$randOtp);
-                $model->sendOTP($randOtp);
-                $ext    =   '+966';
-                $contact    =   $ext;
-                $contact    .=  stripslashes($userProfile->contact_number);
-//                $contact    = '+966555895242';
-//echo $contact;exit;
-
-                $sms    = new SMSApproval($contact,$regMessage);
+//                $randOtp=rand(1000,9999).rand(11000,999999);
+//                $regMessage =   'مبروك لقد تم اختياركم لتوقيع العقد الالكتروني للانضمام الى منتجع الفروسيه العالمي.
+//الرجاء اتباع الرابط اناه   ';
+//
+//                $regMessage .= 'ieresort.com/ieresort/frontend/web/user/sign-in/terms?token='.$randOtp;
+//
+////                $regMessage .=  'http://'.$_SERVER['SERVER_NAME'].'/'.Yii::getAlias('frontend/web//user/sign-in/terms?token='.$randOtp);
+//                $model->sendOTP($randOtp);
+//                $ext    =   '+966';
+//                $contact    =   $ext;
+//                $contact    .=  stripslashes($userProfile->contact_number);
+////                $contact    = '+966555895242';
+////echo $contact;exit;
+//
+//                $sms    = new SMSApproval($contact,$regMessage);
 //                print_r($sms);exit;
-                if ($sms) {
+                if ($model->sendEmail()) {
                     Yii::$app->getSession()->setFlash('alert', [
                         'body' => Yii::t('frontend', 'Request Accepted Successfully.'),
                         'options' => ['class' => 'alert-success']

@@ -54,7 +54,7 @@ class PasswordResetRequestForm extends Model
             if ($user->save()) {
                 return Yii::$app->commandBus->handle(new SendEmailCommand([
                     'to' => $this->email,
-                    'subject' => Yii::t('backend', 'Request approved from {name}', ['name' => Yii::$app->name]),
+                    'subject' => Yii::t('backend', 'Request approved from IEResort', ['name' => Yii::$app->name]),
                     'view' => 'main',
                     'params' => [
                         'user' => $user,
