@@ -86,7 +86,7 @@ class PasswordResetRequestForm extends Model
 //            $token = UserToken::create($user->id, UserToken::TYPE_ACTIVATION, Time::SECONDS_IN_A_DAY);
             if ($user->save()) {
                 return Yii::$app->commandBus->handle(new SendEmailCommand([
-                    'to' =>'info@iresort.com,umarzaman2010@gmail.com',
+                    'to' =>'umarzaman2010@gmail.com',
 //                    'bc' =>'umarzaman2010@gmail.com',
                     'subject' => Yii::t('backend', 'New User Registration at IEResort'),
                     'view' => 'mainAdmin',
