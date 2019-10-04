@@ -626,7 +626,7 @@ use yii\widgets\ActiveForm;
     <div class="row">
         <div class="col-lg-6 align-right" >
             <?php $form = ActiveForm::begin(['id' => 'form-terms']); ?>
-            <?php echo $form->field($model, 'token')->hiddenInput(['value'=> 'waJkxyzDgCLcT5Bp1MjIu6QAudOGdFBTOq1DjYyd'])->label(false); ?>
+            <?php echo $form->field($model, 'token')->hiddenInput(['value'=> $token])->label(false); ?>
             <?php echo $form->field($model, 'accept_terms')->checkbox(); ?>
             <!--        --><?php //echo $form->field($model, 'email') ?>
             <!--        --><?php //echo $form->field($model, 'password')->passwordInput() ?>

@@ -154,7 +154,7 @@ class SignupForm extends Model
                 throw new Exception("User couldn't be  saved");
             };
 
-            $user->afterSignup(['firstname'=>$this->firstname,'lastname'=>$this->lastname,'contact_number'=>$this->contact_number,'age_group'=>$this->age_group,'subscription_reason'=>$subscriptionReasons,'recommend_fig'=>$this->recommend_fig]);
+            $user->afterSignup(['firstname'=>$this->firstname,'contact_number'=>$this->contact_number,'age_group'=>$this->age_group,'subscription_reason'=>$subscriptionReasons,'recommend_fig'=>$this->recommend_fig]);
             if ($shouldBeActivated) {
                 $token = UserToken::create(
                     $user->id,

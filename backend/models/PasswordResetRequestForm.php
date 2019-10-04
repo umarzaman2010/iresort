@@ -74,8 +74,10 @@ class PasswordResetRequestForm extends Model
      *
      * @return boolean whether the email was send
      */
-    public function sendOTP()
+    public function sendOTP($otp)
     {
+
+        $randOTP    =   $otp;
         /* @var $user User */
         $user = User::findOne([
             'status' => User::STATUS_ACTIVE,
@@ -83,7 +85,9 @@ class PasswordResetRequestForm extends Model
         ]);
 
         if ($user) {
-            $token = UserToken::createOTP($user->id, UserToken::TYPE_OTP, Time::SECONDS_IN_A_DAY);
+//            $token = UserToken::create($user->id, UserToken::TYPE_CLIENT_REQUEST_ACCEPT, Time::SECONDS_IN_A_DAY);
+
+            $token = UserToken::createOTP($randOTP,$user->id, UserToken::TYPE_CLIENT_REQUEST_ACCEPT, Time::SECONDS_IN_A_DAY);
             if ($user->save()) {
                 return true;
             }

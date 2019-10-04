@@ -48,7 +48,11 @@ class User extends ActiveRecord implements IdentityInterface
 
     const EVENT_AFTER_SIGNUP = 'afterSignup';
     const EVENT_AFTER_LOGIN = 'afterLogin';
-    public $token;
+    public $otp_token;
+
+    const SCENARIO_Register_ACCEPT_TERMS = "accept_terms";
+    const SCENARIO_OTP_VERIFICATION = "otp_verification";
+
     /**
      * @inheritdoc
      */
@@ -185,6 +189,8 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            [['accept_terms'], 'required','on'=>self::SCENARIO_Register_ACCEPT_TERMS],
+            [['otp_token'], 'required','on'=>self::SCENARIO_OTP_VERIFICATION],
             [['username', 'email'], 'unique'],
             ['status', 'default', 'value' => self::STATUS_NOT_ACTIVE],
             ['status', 'in', 'range' => array_keys(self::statuses())],

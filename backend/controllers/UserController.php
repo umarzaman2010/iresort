@@ -5,6 +5,8 @@ namespace backend\controllers;
 use backend\models\PasswordResetRequestForm;
 use backend\models\search\UserSearch;
 use backend\models\UserForm;
+use common\models\SMS;
+use common\models\SMSApproval;
 use common\models\User;
 use common\models\UserProfile;
 use common\models\UserToken;
@@ -153,33 +155,55 @@ class UserController extends Controller
      */
     public function actionAccept($id)
     {
-        $userProfile= User::findOne($id);
+        $user= User::findOne($id);
+        $userProfile= UserProfile::findOne($user->id);
 //        echo '<PRE>';
 //        print_r($userProfile);exit;
         
         $model = new PasswordResetRequestForm();
-        $model->email   =   $userProfile->email;
+        $model->email   =   $user->email;
 //                echo '<PRE>';
 //        print_r($model);exit;
-        if ($model) {
-            if ($model->sendEmail()) {
-                Yii::$app->getSession()->setFlash('alert', [
-                    'body' => Yii::t('frontend', 'Check your email for further instructions.'),
-                    'options' => ['class' => 'alert-success']
-                ]);
 
-                return $this->redirect(['index']);
-            } else {
-                Yii::$app->getSession()->setFlash('alert', [
-                    'body' => Yii::t('frontend', 'Sorry, we are unable to reset password for email provided.'),
-                    'options' => ['class' => 'alert-danger']
-                ]);
+        if($user->request_status   !=   2){
+            $user->request_status   =   2;
+            if ($model && $user->save()) {
+
+                $randOtp=rand(1000,9999).rand(11000,999999);
+                $regMessage =   'مبروك لقد تم اختياركم لتوقيع العقد الالكتروني للانضمام الى منتجع الفروسيه العالمي.
+الرجاء اتباع الرابط اناه   ';
+
+                $regMessage .= 'localhost/frontend/web/user/sign-in/terms?token='.$randOtp;
+//                $regMessage .=  'http://'.$_SERVER['SERVER_NAME'].'/'.Yii::getAlias('frontend/web//user/sign-in/terms?token='.$randOtp);
+                $model->sendOTP($randOtp);
+                $ext    =   '+966';
+                $contact    =   $ext;
+                $contact    .=  stripslashes($userProfile->contact_number);
+//                $contact    = '+966555895242';
+//echo $contact;exit;
+
+                $sms    = new SMSApproval($contact,$regMessage);
+//                print_r($sms);exit;
+                if ($sms) {
+                    Yii::$app->getSession()->setFlash('alert', [
+                        'body' => Yii::t('frontend', 'Request Accepted Successfully.'),
+                        'options' => ['class' => 'alert-success']
+                    ]);
+
+                    return $this->redirect(['index']);
+                } else {
+                    Yii::$app->getSession()->setFlash('alert', [
+                        'body' => Yii::t('frontend', 'Sorry, SMS has not been sent. Verifiy customer contact.'),
+                        'options' => ['class' => 'alert-danger']
+                    ]);
+                }
             }
+
+            return $this->render('acceptClientRequestToken', [
+                'model' => $model,
+            ]);
         }
 
-        return $this->render('acceptClientRequestToken', [
-            'model' => $model,
-        ]);
     }
 
 }

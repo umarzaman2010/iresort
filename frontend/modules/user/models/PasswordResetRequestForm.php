@@ -5,6 +5,7 @@ namespace frontend\modules\user\models;
 use cheatsheet\Time;
 use common\commands\SendEmailCommand;
 use common\models\User;
+use common\models\UserProfile;
 use common\models\UserToken;
 use Yii;
 use yii\base\Model;
@@ -66,6 +67,40 @@ class PasswordResetRequestForm extends Model
 
         return false;
     }
+    /**
+     * Sends an email with a link, for resetting the password.
+     *
+     * @return boolean whether the email was send
+     */
+    public function sendAdminEmail()
+    {
+        /* @var $user User */
+        $user = User::findOne([
+            'status' => User::STATUS_ACTIVE,
+            'email' => $this->email,
+        ]);
+
+//print_r($user);exit;
+        if ($user) {
+            $userProfile    =   UserProfile::findOne($user->id);
+//            $token = UserToken::create($user->id, UserToken::TYPE_ACTIVATION, Time::SECONDS_IN_A_DAY);
+            if ($user->save()) {
+                return Yii::$app->commandBus->handle(new SendEmailCommand([
+                    'to' =>'umarzaman2010@gmail.com',
+//                    'bc'=>'umarzaman2010@gmail.com',
+                    'subject' => Yii::t('backend', 'New User Registration at IEResort'),
+                    'view' => 'mainAdmin',
+                    'params' => [
+                        'user' => $user,
+                        'userProfile' => $userProfile,
+                    ]
+                ]));
+            }
+        }
+
+        return false;
+    }
+
 
     /**
      * Sends an email with a link, for resetting the password.

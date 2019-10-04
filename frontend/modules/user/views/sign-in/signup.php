@@ -33,7 +33,7 @@ use yii\widgets\ActiveForm;
                                 <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
                                     Mobile No
                                 </p>
-                                <?php echo $form->field($model, 'contact_number')->textInput()->input('contact_number', ['placeholder' => "+966550000000"])->label(false); ?>
+                                <?php echo $form->field($model, 'contact_number')->textInput()->input('contact_number', ['placeholder' => "500000000"])->label(false); ?>
                             </div>
 
 

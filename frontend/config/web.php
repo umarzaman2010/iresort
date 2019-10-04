@@ -12,6 +12,19 @@ $config = [
         ],
     ],
     'components' => [
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'viewPath' => '@app/mail',
+            'useFileTransport' => false,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.gmail.com',
+                'username' => 'umarzaman2010@gmail.com',
+                'password' => 'Rayyan.123',
+                'port' => '587',
+                'encryption' => 'tls',
+            ],
+        ],
         'view' => [
             'theme' => [
                 'basePath' => '@app/themes/traveler',

@@ -4,7 +4,9 @@ namespace frontend\modules\user\controllers;
 
 use common\commands\SendEmailCommand;
 use common\models\SMS;
+use common\models\SMSApproval;
 use common\models\User;
+use common\models\UserProfile;
 use common\models\UserToken;
 use frontend\modules\user\models\LoginForm;
 use frontend\modules\user\models\OTPConfirmForm;
@@ -153,7 +155,9 @@ class SignInController extends \yii\web\Controller
 //        echo '<PRE>';
 //        print_r(Yii::$app->request->post());exit;
         if ($model->load(Yii::$app->request->post())) {
-           
+            $mobileNo  =   Yii::$app->request->post('User')['contact_number'];
+            $mobileNo  =  $model->contact_number;
+            $email  =   Yii::$app->request->post('User')['email'];
             $user = $model->signup();
             if ($user) {
                 if ($model->shouldBeActivated()) {
@@ -169,6 +173,12 @@ class SignInController extends \yii\web\Controller
 $regMessage =   'شكرا لرغبتكم بعضويه منتجع الفروسيه العالمي،
 سوف يقوم فريقنا بالتواصل معكم لاستكمال الاجراءت المطلوبه';
                         $contact    =   '+966594078099';
+
+                    $contact    =   '+966'.stripslashes($mobileNo);
+//                echo $contact;exit;
+//                    $contact    =   '+966555895242';
+
+
         $sms    = new SMS($contact,$regMessage);
 //        $sms->SendMessage();
         if($sms){
@@ -180,6 +190,12 @@ $regMessage =   'شكرا لرغبتكم بعضويه منتجع الفروسي�
                 'options' => ['class' => 'alert-success']
             ]);
         }
+                    $modelPasswordRequest = new PasswordResetRequestForm();
+
+                    $modelPasswordRequest->email    =    $model->email;
+                    if($modelPasswordRequest->sendAdminEmail()){
+                    }
+
 //exit;
 // else {
 //                    Yii::$app->getUser()->login($user);
@@ -364,7 +380,7 @@ $regMessage =   'شكرا لرغبتكم بعضويه منتجع الفروسي�
     }
 
 
-    public function actionTerms($token2=''){
+    public function actionTerms($token=''){
 
 //        $contact    =   '+966594078099';
 //        $sms    = new SMS($contact);
@@ -375,26 +391,28 @@ $regMessage =   'شكرا لرغبتكم بعضويه منتجع الفروسي�
 //            echo 'message not';exit;
 //        }
 //exit;
-
-        if($token2){
-            try {
-                $modelRequest = new RequestAcceptForm($token2);
-//                $modelRequest->requestApprovalToken($token2);
-            } catch (InvalidArgumentException $e) {
-                throw new BadRequestHttpException($e->getMessage());
-            }
-        }
+$token2 =$token;
+//        if($token2){
+//            try {
+//                $modelRequest = new RequestAcceptForm($token2);
+////                $modelRequest->requestApprovalToken($token2);
+//            } catch (InvalidArgumentException $e) {
+//                throw new BadRequestHttpException($e->getMessage());
+//            }
+//        }
         $model  =   new User();
-        $token2='waJkxyzDgCLcT5Bp1MjIu6QAudOGdFBTOq1DjYyd';
+//        $token2='waJkxyzDgCLcT5Bp1MjIu6QAudOGdFBTOq1DjYyd';
         $this->layout='../../../../views/layouts/main2';
-
+        $model->scenario    =   User::SCENARIO_Register_ACCEPT_TERMS;
         if (Yii::$app->request->post('User')) {
 
             $token    =   Yii::$app->request->post('User')['token'];
+//            echo $token;exit;
             try {
                 $modelRequest = new RequestAcceptForm($token);
 //                $model->requestApprovalToken($token);
             } catch (InvalidArgumentException $e) {
+
                 throw new BadRequestHttpException($e->getMessage());
             }
 
@@ -415,11 +433,21 @@ $regMessage =   'شكرا لرغبتكم بعضويه منتجع الفروسي�
                     'token' => $userToken
                 ]);
             }
-
+//
+            $userProfile    =   UserProfile::findOne($modelUser->user_id);
+//            print_r($userProfile);exit;
             $acceptTerms    =   Yii::$app->request->post('User')['accept_terms'];
-            $sms='123';
+            $model->accept_terms    =   $acceptTerms;
             $randOtp=rand(1000,9999);
-            if($acceptTerms !='' && $sms!=''){
+            $regMessage =   'لرجاء ادخال الرقم للتاكيد
+ token number: '.$randOtp;
+            $contact    =   '+966594078099';
+            $ext    =   '+966';
+            $contact    =  $ext.$userProfile->contact_number;
+            $sms    = new SMS($contact,$regMessage);
+//        $sms->SendMessage();
+
+//            if($acceptTerms !='' && $sms){
                 $modelOTP = new PasswordResetRequestForm();
 
 //                echo '<PRE>';
@@ -427,8 +455,9 @@ $regMessage =   'شكرا لرغبتكم بعضويه منتجع الفروسي�
                 $userID   =    $modelUser->user_id;
                 $userModel   =   User::findOne($userID);
 
+            // save Opt AGAINST THIS EMAIL
                 $modelOTP->email   =    $userModel->email;
-                $randOtp=rand(1000,9999);
+
                 if($modelOTP->sendOTP($randOtp)){
 
                 Yii::$app->getSession()->setFlash('alert', [
@@ -448,7 +477,7 @@ $regMessage =   'شكرا لرغبتكم بعضويه منتجع الفروسي�
                         'token' => $userToken
                     ]);
             }
-            }
+//            }
 
 //
 //
@@ -466,27 +495,43 @@ $regMessage =   'شكرا لرغبتكم بعضويه منتجع الفروسي�
     public function actionOtp(){
 
         $model  =   new User();
+        $model->scenario    =   User::SCENARIO_OTP_VERIFICATION;
+
+//        print_r(Yii::$app->request->post('User'));exit;
 if(Yii::$app->request->post('User')){
 
-    $token  =   Yii::$app->request->post('User')['token'];
+    $token  =   Yii::$app->request->post('User')['otp_token'];
+//    $model->otp_token   =  $token;
+
     try {
         $modelOTPConfirm= new OTPConfirmForm($token);
 //                $modelRequest->requestApprovalToken($token2);
     } catch (InvalidArgumentException $e) {
         throw new BadRequestHttpException($e->getMessage());
     }
-
-        $modelUser= User::findIdentityByRequestAcceptToken($modelOTPConfirm->token);
+//    echo $modelOTPConfirm->token;exit;
+//print_r($modelOTPConfirm);exit;
+//        $modelUser= User::findIdentityByRequestAcceptToken($modelOTPConfirm->token);
+        $modelUser= User::findIdentityByOTPToken($modelOTPConfirm->token);
        if($modelUser){
        $model->accept_terms=1;
     $model->save();
+           $userProfile    =   UserProfile::findOne($modelUser->user_id);
+           $regMessage =   'تم انضمامكم رسميا لعضويه منتجع الفروسيه العالمي و سوف يتم التواصل معكم لاستكمال اجراءات السداد ';
+           $contact    =   '+966594078099';
+           $ext    =   '+966';
+           $contact    =  $ext.$userProfile->contact_number;
+           $sms    = new SMSApproval($contact,$regMessage);
+
     Yii::$app->getSession()->setFlash('alert', [
         'body' => Yii::t('frontend', 'Your registration has completed successfully'),
         'options' => ['class' => 'alert-success']
     ]);
     $this->redirect(['terms']);
-    }
 
+//           echo 'hai.sss.';exit;
+    }
+//    echo 'hai..';exit;
 }
 //        echo 'hai....';exit;
     return    $this->render('otp',[

@@ -27,14 +27,14 @@ use yii\widgets\ActiveForm;
 
 <!--                    <form name="contactForm" id="contactForm" method="post" action="" novalidate="novalidate">-->
                         <fieldset>
-                            <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+                            <?php $form = ActiveForm::begin(['id' => 'form-otp']); ?>
 
 
                                     <div class="form-field">
                                         <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
                                            Enter code you recieved
                                         </p>
-                                        <?php echo $form->field($model, 'token')->textInput()->input('token', ['placeholder' => "Enter verification code"])->label(false); ?>
+                                        <?php echo $form->field($model, 'otp_token')->textInput()->input('token', ['placeholder' => "Enter verification code"])->label(false); ?>
                                     </div>
 
                             <div class="form-group">

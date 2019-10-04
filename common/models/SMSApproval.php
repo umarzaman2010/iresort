@@ -8,7 +8,7 @@
 
 namespace common\models;
 
-class SMS
+class SMSApproval
 {
 
 public $username;
@@ -33,9 +33,7 @@ public  $headerLentgh;
 //        $this->messageBody    .=   'https://survey.stcchannels.com.sa/Opinion/Mydani \n\n\n';
 //        $this->messageBody    .=   'آراؤكم محل  أهتمامنا دائماً...';
         $this->messageBody  =   $body;
-        $this->headerLentgh   =464;
-        $this->headerLentgh   +=  strlen($this->messageBody);
-//
+
 $this->contact_number   =   $contact;
 //$this->url   ='https://api.bulksms.com/v1/messages?auto-unicode=true&longMessageMaxParts=30';
     $this->username =   'ieresort';
@@ -43,14 +41,14 @@ $this->contact_number   =   $contact;
         $this->messages = array(
             array('to'=>$this->contact_number,
                 'body'=>$this->messageBody,
-                "encoding"=> "UNICODE",
+//                "encoding"=> "UNICODE",
     ),
         );
         //            array('to'=>'+966594078099', 'body'=>'Hello World!'),
 //            array('to'=>'+966557320466', 'body'=>'Hello World!'),
 //            array('to'=>'+966530556044', 'body'=>$body),
 //            array('to'=>'+966593006712', 'body'=>'Hello World!'),
-        $result = $this->send_message( json_encode($this->messages), 'https://api.bulksms.com/v1/messages?auto-unicode=true&longMessageMaxParts=30',  $this->username , $this->password );
+        $result = $this->send_message(json_encode($this->messages), 'https://api.bulksms.com/v1/messages?auto-unicode=true&longMessageMaxParts=30',  $this->username , $this->password );
 
         if ($result['http_status'] != 201) {
 //            return true;
