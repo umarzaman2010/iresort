@@ -173,7 +173,8 @@ class UserController extends Controller
                 $regMessage =   'مبروك لقد تم اختياركم لتوقيع العقد الالكتروني للانضمام الى منتجع الفروسيه العالمي.
 الرجاء اتباع الرابط اناه   ';
 
-                $regMessage .= 'localhost/frontend/web/user/sign-in/terms?token='.$randOtp;
+                $regMessage .= 'http://51.83.3.111/ieresort/frontend/web/user/sign-in/terms?token='.$randOtp;
+
 //                $regMessage .=  'http://'.$_SERVER['SERVER_NAME'].'/'.Yii::getAlias('frontend/web//user/sign-in/terms?token='.$randOtp);
                 $model->sendOTP($randOtp);
                 $ext    =   '+966';
