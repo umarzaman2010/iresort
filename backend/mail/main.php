@@ -24,7 +24,7 @@ use yii\helpers\Html;
       
         <p>Click the following URL to accept terms and condition. This URL will be redirect to Iresort Application.</p>
 <!--        <p>Username:--><?php //echo $user->username; ?><!--</p>-->
-        <p>URL: <?php echo  $url = $_SERVER['SERVER_NAME'] . '/ieresort' . Yii::getAlias('frontend/web/user/sign-in/terms?token='.$token); ?></p>
+        <p>URL: <?php echo  $url = $_SERVER['SERVER_NAME'] . '/ieresort/' . Yii::getAlias('frontend/web/user/sign-in/terms?token='.$token); ?></p>
         <br>
     </div>
     <div class="footer">With kind regards,Iresort team</div>
