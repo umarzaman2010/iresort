@@ -83,8 +83,8 @@ array_map(function($code){
 
             <div class="row home-content__main" style="padding:24px;background-color: #000000;opacity: 0.3">
 
-                <h2 class="mbr-fonts-style display-1" style="color: #ffffff">True Outdoor Landscape</h2>
-                <h2 class="mbr-fonts-style display-1"  style="color: #ffffff">a huge area of landscape of green areas and basketball/tennis play yards and special lane for horse riding/walking/ byscle</h2>
+                <h2 class="mbr-fonts-style display-1" style="color: #ffffff">New Concept In the world of </h2>
+                <h2 class="mbr-fonts-style display-1"  style="color: #ffffff">Equestrian and Entertainment</h2>
 
 
         </div>
