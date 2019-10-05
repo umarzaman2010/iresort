@@ -72,4 +72,58 @@ return [
     'Welcome to {app-name}. Email with your login information was sent to your email.' => 'Вітаємо у {app-name}. Вам був надісланий e-mail с інформациєю щодо користувача',
     'Your account has been successfully saved' => 'Ваш аккаунт було успішно збережено',
     '{app-name} | Your login information' => '{app-name} | Інформація про користувача',
+
+
+
+
+
+
+    'New Concept In the world of Equestrian and Entertainment'	 =>'مفهوم جديد في عالم الفروسية و الترفيه',
+  'EXCELLENCE AND LEADERSHIP IN THE WORLD OF EQUESTRIAN'	 =>'تميز و ريادة في عالم الفروسية',
+ 'Vision'	 =>'الرؤية',
+'A team of experienced equestrian experts has conducted a field survey and extensive studies that resulted from the creation of the idea of a world-class equestrian resort project that combines originality, modernity and entertainment with a distinctive social environment.'	 =>'قام فريق متميز, ذو خبرة طويلة في مجال الفروسية بمسح ميداني و دراسات مكثفة نتجت عن ابتكار فكرة مشروع عالمي منتجع الفروسيةالعالمي يمزج ما بين الاصالة و الحداثة و الترفيه الهادف في بيئة إجتماعية راقية و متميزة',
+
+'Our Services'	 =>	'خدماتنا',
+'Horse Riding'	 =>'االفروسية',
+'special courses for riding with specialized trainers. and acadamic courses'	 =>'دورات فروسية خاصة من قبل مدربات عالميات و بطريقة التدريب الاكاديمي لضمان تحقيق اعلى المستويات',
+'Private Riding'	 =>	'خدمات الفروسية الخاصة',
+'Host your Horse at our facility and enjoy our wide range of services'	 =>'نستضيف الخيول الخاصة بالمشتركات و نقوم بالرعاية الصحية و الطبية لهم مع خدمات التدريب الخاص',
+'Fitness Center'	 =>'مركز لياقة',
+'GYM excersice and fitness lounge in partnership with Technogym with a direct view to Horse yards'	 =>	'صالة التمرين و الرياضة GYM بالشراكة مع Technogymمع اطلاله مباشرة على ميادين الخيل',
+'Nails & SPA'	 =>	'Nails & SPA',
+'Pedicure and Mancure specialized in the highest level of professional and experience.'	 =>'بديكير و منيكير بايدي متخصصة على أعلى مستوى من الاحتراف و الخبرة',
+'Prevention & Osteopathic Center'	 =>	'ﻣﺮﻛﺰ ﻧﻘﺎﻫﻪ',
+'With  collaboration with MYO Osteopathy center'	 =>	'مركز نقاهة بأعلى المعايير الوقائية بالتعاون مع مركز مايو اوستيوباثي',
+'YOGA'	 =>	'يوغا',
+'Special courses of YOGA sport in the beautifull enviroment of our Resort'	 =>	'دروس خاصة في رياضة اليوغا مع مدربات مختصات في مجال الرياضة التدريب',
+'Steps'	 =>'خطوات الانضمام',
+'How to become One of Our Lucky members'	 =>	'كيفية الترشح للعضوية في منتجع الفروسية العالمي',
+'Apply request'	 =>	'تقديم الطلب',
+'Apply a request online with all <br>info needed<br>press apply to apply'	 =>'تقديم طلب عبر الإنترنت مع جميع المعلومات اللازمة',
+'Request Study'	 =>'دراسة الطلب',
+"Your Request will be studed inorder to&nbsp;<br>have all the needed terms<br>and conditions"	 =>'سوف نقوم بدراسة الطلب لاستيفاء جميع الشروط اللازمة لتكوني عضوة في نادي الفروسة العالمي و سوف يتم اعلامك بذلك',
+'Payment'	 =>	'اتمام المستحقات',
+"Make the payment fees&nbsp;<br>according to your Membership<br>type"	 =>	'اتمام دفع المستحقات السنوية للعضوية مع ادارة المبيعات لدينا و بحسب نوع العضوية',
+'Recieve Card'	 =>'الحصول على بطاقة العضوية',
+"Recieve the membership Card
+                            <br>and user access"	 =>'الحصول على بطاقة العضوية و التمتع بخدمات نادي الفروسية العالمي',
+'CONTACT IE RESORT'	 =>'تواصل مع منتجع الفروسية العالمي',
+'CONTACT INFO'	 =>'تواصل معنا',
+'Where to Find Us'	 =>	'العنوان',
+'Email Us At'	 =>'الايميل',
+'Call Us At'	 =>'رقم الاتصال',
+'Phone:'	 =>'جوال',
+'Menu'	 =>'القائمة',
+'navigation'	 =>'تصفح القائمة',
+'home'	 =>	'الرئيسية',
+'about'	 =>	'عن المنتجع',
+'services'	 =>	'الخدمات',
+'terms and condition'	 =>	'الشروط و الاحكام',
+'register'	 =>	'طلب العضوية',
+'login'	 => 'login',
+'english'	 =>	'English'
+
+
+
+
 ];
