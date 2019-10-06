@@ -61,7 +61,7 @@
                     </div>
                     <div class="card-box">
                         <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                            <?= Yii::t('frontend',' Private Riding') ?> </h4>
+                            <?= Yii::t('frontend','Private Riding') ?> </h4>
                         <p class="mbr-text mbr-fonts-style display-7">        <?= Yii::t('frontend','Host your Horse at our facility and enjoy our wide range of services') ?>&nbsp;</p>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                         <h4 class="card-title pb-3 mbr-fonts-style display-7">
                             <?= Yii::t('frontend','Fitness Center') ?></h4>
                         <p class="mbr-text mbr-fonts-style display-7">
-                            GYM excersice and fitness lounge in partnership with Technogym with a direct view to Horse yards</p>
+                           <?= Yii::t('frontend', 'GYM excersice and fitness lounge in partnership with Technogym with a direct view to Horse yards') ?></p>
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                         <h4 class="card-title pb-3 mbr-fonts-style display-7">
                             <?= Yii::t('frontend','Nails & SPA') ?>  </h4>
                         <p class="mbr-text mbr-fonts-style display-7">
-                            <?= Yii::t('frontend','Pedicure and Mancure specialized in the highest level of professional and experience.') ?> 7 stars SPA and Salon for our members served by highly specialests in the market.</p>
+                            <?= Yii::t('frontend','Pedicure and Mancure specialized in the highest level of professional and experience.') ?> </p>
                     </div>
                 </div>
             </div>

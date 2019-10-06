@@ -28,21 +28,21 @@ use yii\helpers\ArrayHelper;
         <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
 
         <div class="header-nav__content">
-            <h3>Navigation</h3>
+            <h3><?= Yii::t('frontend','Navigation') ?></h3>
 
                     <ul class="header-nav__list">
 <!--                <li class="current"><a class="smoothscroll"  href="#home" title="home">Home</a></li>-->
-                        <li><?= \yii\helpers\Html::a('Home', ['/#home']) ?></li>
+                        <li><?= \yii\helpers\Html::a(Yii::t('frontend','Home'), ['/#home']) ?></li>
 
 <!--                        <li><a class="smoothscroll"  href="#about" title="about">About</a></li>-->
-                        <li><?= \yii\helpers\Html::a('About', ['/#about']) ?></li>
+                        <li><?= \yii\helpers\Html::a(Yii::t('frontend','About'), ['/#about']) ?></li>
 
 <!--                        <li><a class="smoothscroll"  href="#services" title="services">Services</a></li>-->
-                        <li><?= \yii\helpers\Html::a('services', ['/#services']) ?></li>
-                        <li><?= \yii\helpers\Html::a('Terms and Condition', ['/user/sign-in/terms']) ?></li>
+                        <li><?= \yii\helpers\Html::a(Yii::t('frontend','Services'), ['/#services']) ?></li>
+                        <li><?= \yii\helpers\Html::a(Yii::t('frontend','Terms and Condition'), ['/user/sign-in/terms']) ?></li>
 
-                        <?php if(Yii::$app->user->isGuest){?> <li><?= \yii\helpers\Html::a('Register', ['/user/sign-in/signup'], ['data' => ['method' => 'post']]) ?></li><?php }?>
-                <?php if(Yii::$app->user->isGuest){?> <li><?= \yii\helpers\Html::a('Login', ['/user/sign-in/login'], ['data' => ['method' => 'post']]) ?></li><?php }?>
+                        <?php if(Yii::$app->user->isGuest){?> <li><?= \yii\helpers\Html::a(Yii::t('frontend','Register'), ['/user/sign-in/signup'], ['data' => ['method' => 'post']]) ?></li><?php }?>
+                <?php if(Yii::$app->user->isGuest){?> <li><?= \yii\helpers\Html::a(Yii::t('frontend','Login'), ['/user/sign-in/login'], ['data' => ['method' => 'post']]) ?></li><?php }?>
                 <?php if(!Yii::$app->user->isGuest){?> <li><?= \yii\helpers\Html::a('Logout', ['/user/sign-in/logout'], ['data' => ['method' => 'post']]) ?>
 
                 </li><?php }?>
@@ -66,7 +66,7 @@ array_map(function($code){
     </nav>  <!-- end header-nav -->
 
     <a class="header-menu-toggle" href="#0">
-        <span class="header-menu-text">Menu</span>
+        <span class="header-menu-text" style="font-size: large"><?= Yii::t('frontend', 'Menu') ?></span>
         <span class="header-menu-icon"></span>
     </a>
 
@@ -84,7 +84,6 @@ array_map(function($code){
             <div class="row home-content__main" style="padding:24px;background-color: #000000;opacity: 0.3">
 
                 <h2 class="mbr-fonts-style display-1" style="color: #ffffff"><?= Yii::t('frontend','New Concept In the world of Equestrian and Entertainment') ?></h2>
->
 
 
         </div>
