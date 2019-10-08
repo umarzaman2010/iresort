@@ -121,7 +121,8 @@ return [
 'Terms and Condition'	 =>	'الشروط و الاحكام',
 'Register'	 =>	'طلب العضوية',
 'Login'	 => 'login',
-'English'	 =>	'English'
+'English'	 =>	'English',
+    'TERMS AND CONDITIONS'	 =>	'الشروط و الاحكام؟؟'
 
 
 

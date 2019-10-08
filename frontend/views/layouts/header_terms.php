@@ -85,7 +85,7 @@ use yii\helpers\ArrayHelper;
         <div class="row justify-content-md-center">
             <div class="col-md-10 align-center">
                 <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">
-                    TERS AND CONDITIONS&nbsp;</h1>
+                    <?= Yii::t('frontend','TERMS AND CONDITIONS')?> &nbsp;</h1>
 
                 <p class="mbr-text pb-3 mbr-fonts-style display-5">
                     fully detailed law terms and privacy policy and other conditions</p>
