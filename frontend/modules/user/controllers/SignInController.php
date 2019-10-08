@@ -162,11 +162,19 @@ class SignInController extends \yii\web\Controller
             if ($user) {
                 if ($model->shouldBeActivated()) {
                     Yii::$app->getSession()->setFlash('alert', [
-                        'body' => Yii::t(
-                            'frontend',
-                            'Your account has been successfully created. Check your email for further instructions.'
-                        ),
-                        'options' => ['class' => 'alert-success']
+                        'type' => 'success',
+                        'duration' => 12000,
+                        'icon' => 'fa fa-users',
+                        'message' => Yii::t('frontend', 'Your account has been successfully created. Check your email for further instructions.'),
+                        'title' => Yii::t('frontend', 'Success'),
+                        'positonY' => 'top',
+                        'positonX' => 'right'
+//
+//                        'body' => Yii::t(
+//                            'frontend',
+//                            'Your account has been successfully created. Check your email for further instructions.'
+//                        ),
+//                        'options' => ['class' => 'alert-success']
                     ]);
                 }
 
@@ -182,10 +190,12 @@ $regMessage =   'شكرا لرغبتكم بعضويه منتجع الفروسي�
         $sms    = new SMS($contact,$regMessage);
 //        $sms->SendMessage();
         if($sms){
+            $message=' اوافق على كل ما ورد اعلاه و بكل المواد الواردة';
+            $message    .='بالنقر على الموافق سوف يتم استلام كود على رقمكم المسجل للتاكيد';
             Yii::$app->getSession()->setFlash('alert', [
                 'body' => Yii::t(
                     'frontend',
-                    'Your account has been successfully created.'
+                    $message
                 ),
                 'options' => ['class' => 'alert-success']
             ]);
@@ -200,6 +210,7 @@ $regMessage =   'شكرا لرغبتكم بعضويه منتجع الفروسي�
 // else {
 //                    Yii::$app->getUser()->login($user);
 //                }
+              return  $this->redirect(['signup']);
                 return $this->goHome();
             }
         }
@@ -392,14 +403,7 @@ $regMessage =   'شكرا لرغبتكم بعضويه منتجع الفروسي�
 //        }
 //exit;
 $token2 =$token;
-//        if($token2){
-//            try {
-//                $modelRequest = new RequestAcceptForm($token2);
-////                $modelRequest->requestApprovalToken($token2);
-//            } catch (InvalidArgumentException $e) {
-//                throw new BadRequestHttpException($e->getMessage());
-//            }
-//        }
+
         $model  =   new User();
 //        $token2='waJkxyzDgCLcT5Bp1MjIu6QAudOGdFBTOq1DjYyd';
         $this->layout='../../../../views/layouts/main2';
@@ -460,10 +464,15 @@ $token2 =$token;
 
                 if($modelOTP->sendOTP($randOtp)){
 
-                Yii::$app->getSession()->setFlash('alert', [
-                    'body' => Yii::t('frontend', 'Check your phone for verification code'),
-                    'options' => ['class' => 'alert-success']
-                ]);
+                    $message=' اوافق على كل ما ورد اعلاه و بكل المواد الواردة';
+                    $message    .='بالنقر على الموافق سوف يتم استلام كود على رقمكم المسجل للتاكيد';
+                    Yii::$app->getSession()->setFlash('alert', [
+                        'body' => Yii::t(
+                            'frontend',
+                            $message
+                        ),
+                        'options' => ['class' => 'alert-success']
+                    ]);
 
                 return   $this->redirect(['otp']);
             } else {
@@ -523,11 +532,16 @@ if(Yii::$app->request->post('User')){
            $contact    =  $ext.$userProfile->contact_number;
            $sms    = new SMSApproval($contact,$regMessage);
 
-    Yii::$app->getSession()->setFlash('alert', [
-        'body' => Yii::t('frontend', 'Your registration has completed successfully'),
-        'options' => ['class' => 'alert-success']
-    ]);
-    $this->redirect(['terms']);
+           $message='لقد تم توقيع العقد الكترونيا و حسب الانظمه السعودية، سوف يتم التواصل معكم من قسم خدمات الاعضاء لاستكمال عملية سداد الرسوم.';
+           Yii::$app->getSession()->setFlash('alert', [
+               'body' => Yii::t(
+                   'frontend',
+                   $message
+               ),
+               'options' => ['class' => 'alert-success']
+           ]);
+
+           $this->redirect(['terms']);
 
 //           echo 'hai.sss.';exit;
     }

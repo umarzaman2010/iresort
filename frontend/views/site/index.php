@@ -33,7 +33,7 @@
     <div class="overlay"></div>
     <div class="row section-header has-bottom-sep" data-aos="fade-up">
         <div class="col-full">
-            <h3 class="subhead"><?= Yii::t('frontend','Our Services') ?></h3>
+            <h2><?= Yii::t('frontend','Our Services') ?></h2>
 
         </div>
     </div> <!-- end section-header -->
@@ -46,7 +46,7 @@
                         <img src="<?= Yii::getAlias('@web') ?>/glimages/services_images/ride2-560x397.jpg" alt="Mobirise" title="">
                     </div>
                     <div class="card-box">
-                        <h4 class="card-title pb-3 mbr-fonts-style display-7">
+                        <h4 class="card-title pb-3 mbr-fonts-style" style="font-size:18px;font-weight:bold">
                             <?= Yii::t('frontend','Horse Riding') ?></h4>
                         <p class="mbr-text mbr-fonts-style display-7">
                             <?= Yii::t('frontend','special courses for riding with specialized trainers. and acadamic courses') ?></p>
@@ -60,7 +60,7 @@
                         <img src="<?= Yii::getAlias('@web') ?>/glimages/services_images/ride1-560x397.jpg" alt="Mobirise" title="">
                     </div>
                     <div class="card-box">
-                        <h4 class="card-title pb-3 mbr-fonts-style display-7">
+                        <h4 class="card-title pb-3 mbr-fonts-style" style="font-size:18px;font-weight:bold">
                             <?= Yii::t('frontend','Private Riding') ?> </h4>
                         <p class="mbr-text mbr-fonts-style display-7">        <?= Yii::t('frontend','Host your Horse at our facility and enjoy our wide range of services') ?>&nbsp;</p>
                     </div>
@@ -73,7 +73,7 @@
                         <img src="<?= Yii::getAlias('@web') ?>/glimages/services_images/gym1-560x397.png" alt="Mobirise" title="">
                     </div>
                     <div class="card-box">
-                        <h4 class="card-title pb-3 mbr-fonts-style display-7">
+                        <h4 class="card-title pb-3 mbr-fonts-style" style="font-size:18px;font-weight:bold">
                             <?= Yii::t('frontend','Fitness Center') ?></h4>
                         <p class="mbr-text mbr-fonts-style display-7">
                            <?= Yii::t('frontend', 'GYM excersice and fitness lounge in partnership with Technogym with a direct view to Horse yards') ?></p>
@@ -89,7 +89,7 @@
                     <div class="card-box">
                         <h4 class="card-title pb-3 mbr-fonts-style display-7">
                             <?= Yii::t('frontend','Nails & SPA') ?>  </h4>
-                        <p class="mbr-text mbr-fonts-style display-7">
+                        <p class="mbr-text mbr-fonts-style" style="font-size:18px;font-weight:bold">
                             <?= Yii::t('frontend','Pedicure and Mancure specialized in the highest level of professional and experience.') ?> </p>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                         <img src="<?= Yii::getAlias('@web') ?>/glimages/services_images/-560x3971.png" alt="Mobirise" title="">
                     </div>
                     <div class="card-box">
-                        <h4 class="card-title pb-3 mbr-fonts-style display-7">
+                        <h4 class="card-title pb-3 mbr-fonts-style" style="font-size:18px;font-weight:bold">
                             <?= Yii::t('frontend','Prevention & Osteopathic Center') ?> </h4>
                         <p class="mbr-text mbr-fonts-style display-7">
                             <?= Yii::t('frontend','With  collaboration with MYO Osteopathy center') ?></p>
@@ -114,7 +114,7 @@
                         <img src="<?= Yii::getAlias('@web') ?>/glimages/services_images/yoga2-560x397.jpg" alt="Mobirise" title="">
                     </div>
                     <div class="card-box">
-                        <h4 class="card-title pb-3 mbr-fonts-style display-7">
+                        <h4 class="card-title pb-3 mbr-fonts-style" style="font-size:18px;font-weight:bold">
                             <?= Yii::t('frontend','YOGA') ?>&nbsp;</h4>
                         <p class="mbr-text mbr-fonts-style display-7">
                             <?= Yii::t('frontend','Special courses of YOGA sport in the beautifull enviroment of our Resort') ?> </p>
@@ -143,7 +143,7 @@
         <h2 class="mbr-section-title pb-3 mbr-fonts-style align-center display-2">
             <?= Yii::t('frontend','Steps') ?>
         </h2>
-        <h3 class="mbr-section-subtitle pb-5 mbr-fonts-style align-center display-5">
+        <h3 class="mbr-section-subtitle pb-5 mbr-fonts-style align-center display-5" style="font-size:16px;font-weight:bold">
             <?= Yii::t('frontend','How to become One of Our Lucky members') ?> </h3>
         <div class="step-container row justify-content-center">
             <div class="card col-12 pb-4 col-md-3 separline">
@@ -154,7 +154,7 @@
                         </h3>
                     </div>
                     <div class="step-text-content align-center">
-                        <h4 class="mbr-step-title pb-3 mbr-fonts-style display-5"><a href="http://ieresort.com/register.php" target="_blank"><?= Yii::t('frontend','Apply request') ?></a></h4>
+                        <h4 class="mbr-step-title pb-3 mbr-fonts-style display-5"><a href="<?= \yii\helpers\Url::to('user/sign-in/signup') ?>" target="_blank"><?= Yii::t('frontend','Apply request') ?></a></h4>
                         <p class="mbr-step-text mbr-fonts-style display-7">
                             <?= Yii::t('frontend','Apply a request online with all <br>info needed<br>press apply to apply') ?> </p>
                     </div>
@@ -230,7 +230,7 @@
 
     <div class="row section-header" data-aos="fade-up">
         <div class="col-full">
-            <h3 class="subhead">
+            <h3 >
                 <?= Yii::t('frontend','CONTACT IE RESORT') ?>  </h3>
         </div>
     </div>
@@ -248,11 +248,11 @@
         <div class="contact-secondary">
             <div class="contact-info">
 
-                <h3 class="h6 hide-on-fullwidth"><?= Yii::t('frontend','CONTACT INFO') ?> </h3>
+                <h3><?= Yii::t('frontend','CONTACT INFO') ?> </h3>
 
 
                 <div class="cinfo">
-                    <h5><?= Yii::t('frontend','Where to Find Us') ?></h5>
+                    <h5 style="font-weight:bold"><?= Yii::t('frontend','Where to Find Us') ?></h5>
 
                     <p>
                         Wadi laban, Riyadh, KSA
@@ -260,7 +260,7 @@
                 </div>
 
                 <div class="cinfo">
-                      <h5><?= Yii::t('frontend','Email Us At') ?></h5>
+                      <h5 style="font-weight:bold"><?= Yii::t('frontend','Email Us At') ?></h5>
 
                     <p>
                             info@ieresort.com
@@ -268,7 +268,7 @@
                 </div>
 
                 <div class="cinfo">
-                    <h5><?= Yii::t('frontend','Call Us At') ?></h5>
+                    <h5 style="font-weight:bold"><?= Yii::t('frontend','Call Us At') ?></h5>
                     <p>
 
                         <?= Yii::t('frontend','Phone:') ?> +966582954108<br>

@@ -27,6 +27,7 @@ GlintAsset::register($this);
 
 <!--<!-- Breadcrumbs End -->
 <!--<div class="container">-->
+
 <?=$content; ?>
 <!--</div>-->
 

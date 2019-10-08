@@ -5,16 +5,21 @@ use yii\bootstrap\NavBar;
 use yii\bootstrap\Alert;
 use yii\helpers\ArrayHelper;
 ?>
-<!-- Main content -->
-<section class="content">
-    <?php if (Yii::$app->session->hasFlash('alert')): ?>
-        <?php echo Alert::widget([
-            'body' => ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'body'),
-            'options' => ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'options'),
-        ]) ?>
-    <?php endif; ?>
-</section><!-- /.content -->
+
 <header class="s-header">
+    <div class="row">
+        <div class="col col-lg-2"></div>
+        <div class="col col-lg-8" style="text-align: right; font-size: 22px;font-weight: bold">
+            <?php if (Yii::$app->session->hasFlash('alert')):?>
+                <?php echo \yii\bootstrap\Alert::widget([
+                    'body'=>\yii\helpers\ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'body'),
+                    'options'=>\yii\helpers\ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'options'),
+                ])?>
+            <?php endif; ?>
+
+        </div>
+        <div class="col col-lg-2"></div>
+    </div>
     <div class="header-logo">
         <a class="site-logo" href="<?php echo \yii\helpers\Url::to(Yii::getAlias('@web')) ?>">
             <!--                --><?//= \yii\helpers\Html::a('Home', ['/#home']) ?>
@@ -66,7 +71,7 @@ array_map(function($code){
     </nav>  <!-- end header-nav -->
 
     <a class="header-menu-toggle" href="#0">
-        <span class="header-menu-text" style="font-size: large"><?= Yii::t('frontend', 'Menu') ?></span>
+        <span class="header-menu-text" style="font-size: 22px;font-weight: bold"><?= Yii::t('frontend', 'Menu') ?></span>
         <span class="header-menu-icon"></span>
     </a>
 

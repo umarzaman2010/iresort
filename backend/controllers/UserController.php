@@ -203,8 +203,87 @@ class UserController extends Controller
             return $this->render('acceptClientRequestToken', [
                 'model' => $model,
             ]);
+        }else{
+            Yii::$app->getSession()->setFlash('alert', [
+                'body' => Yii::t('frontend', 'User already approved'),
+                'options' => ['class' => 'alert-danger']
+            ]);
+
+            return $this->redirect(['index']);
         }
 
     }
 
+
+    /**
+     * @return string|Response
+     */
+    public function actionReject($id)
+    {
+        $user= User::findOne($id);
+        $userProfile= UserProfile::findOne($user->id);
+//        echo '<PRE>';
+//        print_r($userProfile);exit;
+
+//        $model = new PasswordResetRequestForm();
+//        $model->email   =   $user->email;
+//                echo '<PRE>';
+//        print_r($model);exit;
+
+        if($user->request_status   !=   1){
+            $user->request_status   =   1;
+            if ($user->save()) {
+
+//                $randOtp=rand(1000,9999).rand(11000,999999);
+//                $regMessage =   'مبروك لقد تم اختياركم لتوقيع العقد الالكتروني للانضمام الى منتجع الفروسيه العالمي.
+//الرجاء اتباع الرابط اناه   ';
+//
+//                $regMessage .= 'ieresort.com/ieresort/frontend/web/user/sign-in/terms?token='.$randOtp;
+//
+////                $regMessage .=  'http://'.$_SERVER['SERVER_NAME'].'/'.Yii::getAlias('frontend/web//user/sign-in/terms?token='.$randOtp);
+//                $model->sendOTP($randOtp);
+//                $ext    =   '+966';
+//                $contact    =   $ext;
+//                $contact    .=  stripslashes($userProfile->contact_number);
+////                $contact    = '+966555895242';
+////echo $contact;exit;
+//
+//                $sms    = new SMSApproval($contact,$regMessage);
+//                print_r($sms);exit;
+//                if ($model->sendEmail()) {
+//                    Yii::$app->getSession()->setFlash('alert', [
+//                        'body' => Yii::t('frontend', 'Request Accepted Successfully.'),
+//                        'options' => ['class' => 'alert-success']
+//                    ]);
+//
+//                    return $this->redirect(['index']);
+//                } else {
+//                    Yii::$app->getSession()->setFlash('alert', [
+//                        'body' => Yii::t('frontend', 'Sorry, SMS has not been sent. Verifiy customer contact.'),
+//                        'options' => ['class' => 'alert-danger']
+//                    ]);
+//                }
+
+
+                Yii::$app->getSession()->setFlash('alert', [
+                    'body' => Yii::t('frontend', 'Request Rejected Successfully.'),
+                    'options' => ['class' => 'alert-success']
+                ]);
+
+                return $this->redirect(['index']);
+            }
+
+//            return $this->render('acceptClientRequestToken', [
+//                'model' => $model,
+//            ]);
+        }else{
+            Yii::$app->getSession()->setFlash('alert', [
+                'body' => Yii::t('frontend', 'User already rejected'),
+                'options' => ['class' => 'alert-danger']
+            ]);
+
+            return $this->redirect(['index']);
+        }
+
+    }
 }

@@ -27,6 +27,13 @@ GlintAsset::register($this);
 
 <!--<!-- Breadcrumbs End -->
 <!--<div class="container">-->
+
+<?php if (Yii::$app->session->hasFlash('alert')):?>
+<?php echo \yii\bootstrap\Alert::widget([
+    'body'=>\yii\helpers\ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'body'),
+    'options'=>\yii\helpers\ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'options'),
+])?>
+<?php endif; ?>
     <?=$content; ?>
 <!--</div>-->
 
