@@ -271,7 +271,7 @@
                     <h5 style="font-weight:bold"><?= Yii::t('frontend','Call Us At') ?></h5>
                     <p>
 
-                        <?= Yii::t('frontend','Phone:') ?> +966582954108<br>
+                        <?= Yii::t('frontend','Phone:') ?> 966582954108<br>
 
                     </p>
                 </div>

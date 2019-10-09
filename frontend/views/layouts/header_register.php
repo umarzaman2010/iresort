@@ -5,7 +5,7 @@ use yii\bootstrap\NavBar;
 use yii\bootstrap\Alert;
 use yii\helpers\ArrayHelper;
 ?>
-
+<div id="top"></div>
 <header class="s-header">
     <!-- Main content -->
     <div class="row">
