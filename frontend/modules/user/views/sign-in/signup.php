@@ -24,14 +24,16 @@ use yii\widgets\ActiveForm;
 
                             <div class="form-field">
                                 <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
-                                    Full Name
+
+                                    <?= Yii::t('frontend','Full Name') ?>
                                 </p>
                                 <?php echo $form->field($model, 'firstname')->textInput()->input('firstname', ['placeholder' => "Full Name"])->label(false); ?>
                             </div>
 
                             <div class="form-field">
                                 <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
-                                    Mobile No
+
+                                    <?= Yii::t('frontend','Mobile No') ?>
                                 </p>
                                 <?php echo $form->field($model, 'contact_number')->textInput()->input('contact_number', ['placeholder' => "500000000"])->label(false); ?>
                             </div>
@@ -39,14 +41,16 @@ use yii\widgets\ActiveForm;
 
                             <div class="form-field">
                                 <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
-                                    Email
+
+                                    <?= Yii::t('frontend','Email') ?>
                                 </p>
                                 <?php echo $form->field($model, 'email')->textInput()->input('email1', ['placeholder' => "Email Address"])->label(false); ?>
                             </div>
 
                             <div class="form-field">
                                 <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
-                                    Age Group
+
+                                    <?= Yii::t('frontend','Age Group') ?>
                                 </p>
                                 <span style="color:#0d0d0d">
                                 <?php echo $form->field($model, 'age_group')->dropDownList(\frontend\modules\user\models\SignupForm::ageLimit())->label(false);; ?>
@@ -55,7 +59,8 @@ use yii\widgets\ActiveForm;
 
                             <div class="form-field">
                                 <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
-                                    Choose your reason for subscription
+
+                                    <?= Yii::t('frontend','Choose your reason for subscription') ?>
                                 </p>
                                 <span style="align-content: flex-start">
                                                                     <?php echo $form->field($model, 'subscription_reason')->checkboxList(\frontend\modules\user\models\SignupForm::subscriptionReason())->label(false); ?>
@@ -65,13 +70,13 @@ use yii\widgets\ActiveForm;
 
                             <div class="form-field">
                                 <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
-                                    Important firgure you recommend
+                                    <?= Yii::t('frontend','Important figure you recommend') ?>
                                 </p>
                                 <?php echo $form->field($model, 'recommend_fig')->textarea(['rows' => '6'])->label(false); ?>
                             </div>
 
                             <div class="form-group">
-                                <?php echo Html::submitButton(Yii::t('frontend', 'Signup'), ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+                                <?php echo Html::submitButton(Yii::t('frontend', 'Register'), ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
                             </div>
                             <?php ActiveForm::end(); ?>
                         </fieldset>
