@@ -212,12 +212,12 @@ class SignupForm extends Model
     public static function subscriptionReason()
     {
         return [
-            self::LOVE_TO_PRACTICE => Yii::t('common', 'Love to practice equestrian'),
-            self::SPORTS_CLUB => Yii::t('common', 'Sports Club (GYM)'),
-            self::WOMEN_SALON => Yii::t('common', 'Women Salon and Osteopathy Center'),
-            self::SUPPORT_SERVICES => Yii::t('common', 'Support services of sessions, gardens and walk'),
-            self::LOVE_PLAYING_SPORTS => Yii::t('common', 'Love playing sports like tennis, football, basketball, volleyball, handball and badminton'),
-            self::NURSERVER_ANG_GAME => Yii::t('common', 'Nursery and games area')
+            self::LOVE_TO_PRACTICE => Yii::t('common', 'Passion of riding'),
+            self::SPORTS_CLUB => Yii::t('common', 'Fitness Center'),
+            self::WOMEN_SALON => Yii::t('common', 'SPA and Prevention & Osteopathic Center'),
+            self::SUPPORT_SERVICES => Yii::t('common', 'Support services of Open areas, gardens and walk'),
+            self::LOVE_PLAYING_SPORTS => Yii::t('common', 'Playing sports like tennis, football, basketball, volleyball, handball and badminton'),
+            self::NURSERVER_ANG_GAME => Yii::t('common', 'Kids Play Areas , swimming pool and Nursery')
         ];
     }
 }

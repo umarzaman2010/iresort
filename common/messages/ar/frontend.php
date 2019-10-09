@@ -122,7 +122,13 @@ return [
 'Register'	 =>	'طلب العضوية',
 'Login'	 => 'login',
 'English'	 =>	'English',
-    'TERMS AND CONDITIONS'	 =>	'الشروط و الاحكام؟؟'
+    'TERMS AND CONDITIONS'	 =>	'الشروط و الاحكام؟؟',
+    'Passion of riding'	 =>	'حب ممارسة الفروسية',
+   'Fitness Center'	 =>	'(GYM)النادي الرياضي',
+    'SPA and Prevention & Osteopathic Center'	 =>	'',
+    'Support services of Open areas, gardens and walk'	 =>	'الخدمات المساندة من جلسات و حدائق و ممشى',
+    'Playing sports like tennis, football, basketball, volleyball, handball and badminton'	 =>	'حب ممارسة الرياضة مثل التنس الارضي و كرة القدم و كره السلة و كرة الطائرة و كرة اليد و الريشة',
+    'Kids Play Areas , swimming pool and Nursery'	 =>	'حضانة الأطفال ومنطقة الألعاب'
 
 
 
