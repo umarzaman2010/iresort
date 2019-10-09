@@ -86,8 +86,8 @@ use yii\helpers\ArrayHelper;
 <!--<div class="overlay"></div>-->
 <div class="row section-header has-bottom-sep" data-aos="fade-up">
     <div class="col-full">
-        <h5 style="color: #ffffff;"><?= Yii::t('frontend','WELCOME TO THE EQUESTRIAN MEMBERSHIP') ?>
-        </h5>
+        <h3 style="color: #ffffff;"><?= Yii::t('frontend','WELCOME TO THE EQUESTRIAN MEMBERSHIP') ?>
+        </h3>
     </div>
 </div> <!-- end section-header -->
 
