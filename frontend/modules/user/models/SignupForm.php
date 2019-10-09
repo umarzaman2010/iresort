@@ -199,9 +199,9 @@ class SignupForm extends Model
     public static function ageLimit()
     {
         return [
-            self::AGE_19_ABOVE => Yii::t('common', 'Adult group - from 19 years and above'),
-            self::AGE_6_19 => Yii::t('common', 'Adolescents - from 6 to 19 years'),
-            self::AGE_6_BELOW => Yii::t('common', 'Kindergarten age group - less than six years')
+            self::AGE_19_ABOVE => Yii::t('frontend', 'Adult group - from 19 years and above'),
+            self::AGE_6_19 => Yii::t('frontend', 'Adolescents - from 6 to 19 years'),
+            self::AGE_6_BELOW => Yii::t('frontend', 'Kindergarten age group - less than six years')
         ];
     }
 
@@ -212,12 +212,12 @@ class SignupForm extends Model
     public static function subscriptionReason()
     {
         return [
-            self::LOVE_TO_PRACTICE => Yii::t('common', 'Passion of riding'),
-            self::SPORTS_CLUB => Yii::t('common', 'Fitness Center'),
-            self::WOMEN_SALON => Yii::t('common', 'SPA and Prevention & Osteopathic Center'),
-            self::SUPPORT_SERVICES => Yii::t('common', 'Support services of Open areas, gardens and walk'),
-            self::LOVE_PLAYING_SPORTS => Yii::t('common', 'Playing sports like tennis, football, basketball, volleyball, handball and badminton'),
-            self::NURSERVER_ANG_GAME => Yii::t('common', 'Kids Play Areas , swimming pool and Nursery')
+            self::LOVE_TO_PRACTICE => Yii::t('frontend', 'Passion of riding'),
+            self::SPORTS_CLUB => Yii::t('frontend', 'Fitness Center'),
+            self::WOMEN_SALON => Yii::t('frontend', 'SPA and Prevention & Osteopathic Center'),
+            self::SUPPORT_SERVICES => Yii::t('frontend', 'Support services of Open areas, gardens and walk'),
+            self::LOVE_PLAYING_SPORTS => Yii::t('frontend', 'Playing sports like tennis, football, basketball, volleyball, handball and badminton'),
+            self::NURSERVER_ANG_GAME => Yii::t('frontend', 'Kids Play Areas , swimming pool and Nursery')
         ];
     }
 }
