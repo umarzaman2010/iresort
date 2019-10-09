@@ -141,7 +141,9 @@ return [
     'Adult group - from 19 years and above' => 'فئة الكبار - من 19 سنة و ما فوق',
     'Adolescents - from 6 to 19 years' => 'فئة اليافعات - من 6 سنوات الى 19 سنة',
     'Kindergarten age group - less than six years' => 'فئة سن الحضانة- اقل من ست سنوات',
-//    'WELCOME TO THE EQUESTRIAN MEMBERSHIP' => 'اهلا بكم في صفحة تسجيل منتجع الفروسية العالمي',
+    '500000000' => 'الجوال او رقم للتواصل',
+    'Email Address' => 'الايميل اذا امكن',
+    'Important personalities you recommend - please type your name and contact number' => 'شخصيات مهمة توصين بهم - الرجاء كتابة الاسم و رقم التواصل',
 //    'WELCOME TO THE EQUESTRIAN MEMBERSHIP' => 'اهلا بكم في صفحة تسجيل منتجع الفروسية العالمي',
 
 

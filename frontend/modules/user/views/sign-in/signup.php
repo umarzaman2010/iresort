@@ -27,7 +27,7 @@ use yii\widgets\ActiveForm;
 
                                     <?= Yii::t('frontend','Full Name') ?>
                                 </p>
-                                <?php echo $form->field($model, 'firstname')->textInput()->input('firstname', ['placeholder' => "Full Name"])->label(false); ?>
+                                <?php echo $form->field($model, 'firstname')->textInput()->input('firstname', ['placeholder' =>Yii::t('frontend',"Full Name")])->label(false); ?>
                             </div>
 
                             <div class="form-field">
@@ -35,7 +35,7 @@ use yii\widgets\ActiveForm;
 
                                     <?= Yii::t('frontend','Mobile No') ?>
                                 </p>
-                                <?php echo $form->field($model, 'contact_number')->textInput()->input('contact_number', ['placeholder' => "500000000"])->label(false); ?>
+                                <?php echo $form->field($model, 'contact_number')->textInput()->input('contact_number', ['placeholder' => Yii::t('frontend',"500000000")])->label(false); ?>
                             </div>
 
 
@@ -44,7 +44,7 @@ use yii\widgets\ActiveForm;
 
                                     <?= Yii::t('frontend','Email') ?>
                                 </p>
-                                <?php echo $form->field($model, 'email')->textInput()->input('email1', ['placeholder' => "Email Address"])->label(false); ?>
+                                <?php echo $form->field($model, 'email')->textInput()->input('email1', ['placeholder' => Yii::t('frontend',"Email Address") ])->label(false); ?>
                             </div>
 
                             <div class="form-field">
@@ -72,7 +72,7 @@ use yii\widgets\ActiveForm;
                                 <p style="color: #ffffff; text-align: left; margin: 0px;padding: 0;">
                                     <?= Yii::t('frontend','Important figure you recommend') ?>
                                 </p>
-                                <?php echo $form->field($model, 'recommend_fig')->textarea(['rows' => '6'])->label(false); ?>
+                                <?php echo $form->field($model, 'recommend_fig')->textarea(['rows' => '6','placeholder'=>Yii::t('frontend','Important personalities you recommend - please type your name and contact number')])->label(false); ?>
                             </div>
 
                             <div class="form-group">
