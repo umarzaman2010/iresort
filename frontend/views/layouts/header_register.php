@@ -88,7 +88,6 @@ use yii\helpers\ArrayHelper;
     <div class="col-full">
         <h5 style="color: #ffffff;"><?= Yii::t('frontend','WELCOME TO THE EQUESTRIAN MEMBERSHIP') ?>
         </h5>
-        <h1 class="display-1 display-1--light"><?= Yii::t('frontend','Request') ?></h1>
     </div>
 </div> <!-- end section-header -->
 
